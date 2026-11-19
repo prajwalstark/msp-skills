@@ -53,7 +53,7 @@ SKILL="pagerduty"
 CLI_BIN="pagerduty-cli"
 MCP_BIN="pagerduty-mcp"
 
-OWNER="${MSP_SKILLS_OWNER:-servosity}"
+OWNER="${MSP_SKILLS_OWNER:-prajwalstark}"
 REPO="${MSP_SKILLS_REPO:-msp-skills}"
 INSTALL_DIR="${INSTALL_DIR:-${HOME}/.local/bin}"
 

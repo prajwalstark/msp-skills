@@ -5,7 +5,7 @@
 # dependency and stops at the one step a script cannot do for you: approving the
 # Chrome extension.
 #
-#   irm https://raw.githubusercontent.com/servosity/msp-skills/main/skills/connect-tool/bootstrap.ps1 | iex
+#   irm https://raw.githubusercontent.com/prajwalstark/msp-skills/main/skills/connect-tool/bootstrap.ps1 | iex
 #
 # Env vars:
 #   MSP_SKILLS_OWNER / MSP_SKILLS_REPO / MSP_SKILLS_REF   override the source
@@ -18,7 +18,7 @@
 function Invoke-ConnectToolBootstrap {
 $ErrorActionPreference = "Stop"
 
-$Owner = if ($env:MSP_SKILLS_OWNER) { $env:MSP_SKILLS_OWNER } else { "servosity" }
+$Owner = if ($env:MSP_SKILLS_OWNER) { $env:MSP_SKILLS_OWNER } else { "prajwalstark" }
 $Repo  = if ($env:MSP_SKILLS_REPO)  { $env:MSP_SKILLS_REPO }  else { "msp-skills" }
 $Ref   = if ($env:MSP_SKILLS_REF)   { $env:MSP_SKILLS_REF }   else { "main" }
 $InstallDir = if ($env:INSTALL_DIR) { $env:INSTALL_DIR } else { "$env:USERPROFILE\.claude\skills\connect-tool" }

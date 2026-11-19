@@ -230,14 +230,14 @@ end
 
 NAME=release_base_refused; begin "MSP_SKILLS_RELEASE_BASE override cannot claim immutability"
 ASSETS="${WORK}/assets.${NAME}"; make_assets "${ASSETS}"; start_server "${ASSETS}"
-fresh_dir "${NAME}"; run_installer MSP_SKILLS_RELEASE_BASE="${API_BASE}/servosity/msp-skills/releases/download/${TAG}"
+fresh_dir "${NAME}"; run_installer MSP_SKILLS_RELEASE_BASE="${API_BASE}/prajwalstark/msp-skills/releases/download/${TAG}"
 check "non-zero" rc_nonzero; check "override named" out_has "MSP_SKILLS_RELEASE_BASE is set"
 check "unchanged" unchanged; check "clean" clean; check "no API call" log_lacks "/repos/"
 end
 
 NAME=release_base_hatch; begin "MSP_SKILLS_RELEASE_BASE override with the hatch installs (hashes still verified)"
 ASSETS="${WORK}/assets.${NAME}"; make_assets "${ASSETS}"; start_server "${ASSETS}"
-fresh_dir "${NAME}"; run_installer MSP_SKILLS_RELEASE_BASE="${API_BASE}/servosity/msp-skills/releases/download/${TAG}" MSP_SKILLS_ALLOW_MUTABLE=1
+fresh_dir "${NAME}"; run_installer MSP_SKILLS_RELEASE_BASE="${API_BASE}/prajwalstark/msp-skills/releases/download/${TAG}" MSP_SKILLS_ALLOW_MUTABLE=1
 check "exit 0" rc_is 0; check "installed" installed; check "clean" clean; check "no API call" log_lacks "/repos/"
 end
 
@@ -321,8 +321,8 @@ end
 NAME=dry_run_api; begin "DRY_RUN=1 exits 0, prints URLs, creates nothing, consults no tag/download"
 ASSETS="${WORK}/assets.${NAME}"; make_assets "${ASSETS}"; start_server "${ASSETS}"
 DIR="${WORK}/cases/${NAME}/never-created"; run_installer MSP_SKILLS_API_BASE="${API_BASE}" DRY_RUN=1
-check "exit 0" rc_is 0; check "CLI URL printed" out_has "CLI URL:      ${API_BASE}/servosity/msp-skills/releases/download/${TAG}/${CLI_ASSET}"
-check "MCP URL printed" out_has "MCP URL:      ${API_BASE}/servosity/msp-skills/releases/download/${TAG}/${MCP_ASSET}"
+check "exit 0" rc_is 0; check "CLI URL printed" out_has "CLI URL:      ${API_BASE}/prajwalstark/msp-skills/releases/download/${TAG}/${CLI_ASSET}"
+check "MCP URL printed" out_has "MCP URL:      ${API_BASE}/prajwalstark/msp-skills/releases/download/${TAG}/${MCP_ASSET}"
 check "install dir not created" test ! -e "${DIR}"
 check "no tag fetch" log_lacks "/releases/tags/"; check "no download" log_lacks "/releases/download/"
 end

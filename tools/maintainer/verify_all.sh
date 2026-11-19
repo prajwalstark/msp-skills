@@ -180,8 +180,8 @@ if reg and not reg.get('markdown_only') and reg.get('cli_hash_at_release') in (N
     print(json.load(open(f'skills/{slug}/manifest.json'))['version'])
 ")"
   if [ -n "$pin" ]; then
-    out="$(DRY_RUN=1 MSP_SKILLS_RELEASE_BASE="https://github.com/servosity/msp-skills/releases/download/${slug}-v${pin}" bash "$sh" 2>&1 || true)"
-    if echo "$out" | grep -q 'github.com/servosity/msp-skills' && ! echo "$out" | grep -qi 'PLACEHOLDER'; then
+    out="$(DRY_RUN=1 MSP_SKILLS_RELEASE_BASE="https://github.com/prajwalstark/msp-skills/releases/download/${slug}-v${pin}" bash "$sh" 2>&1 || true)"
+    if echo "$out" | grep -q 'github.com/prajwalstark/msp-skills' && ! echo "$out" | grep -qi 'PLACEHOLDER'; then
       pass "$slug install.sh URLs resolve (first release pending - pinned ${slug}-v${pin})"
     else
       echo "$out"
@@ -198,11 +198,11 @@ if reg and not reg.get('markdown_only') and reg.get('cli_hash_at_release') in (N
     # Fallback (shallow clones with no tags, e.g. CI): the live API path.
     local_tag="$(git tag -l "${slug}-v*" --sort=-version:refname 2>/dev/null | head -1)"
     if [ -n "$local_tag" ]; then
-      out="$(DRY_RUN=1 MSP_SKILLS_RELEASE_BASE="https://github.com/servosity/msp-skills/releases/download/${local_tag}" bash "$sh" 2>&1 || true)"
+      out="$(DRY_RUN=1 MSP_SKILLS_RELEASE_BASE="https://github.com/prajwalstark/msp-skills/releases/download/${local_tag}" bash "$sh" 2>&1 || true)"
     else
       out="$(DRY_RUN=1 bash "$sh" 2>&1 || true)"
     fi
-    if echo "$out" | grep -q 'github.com/servosity/msp-skills' && ! echo "$out" | grep -qi 'PLACEHOLDER'; then
+    if echo "$out" | grep -q 'github.com/prajwalstark/msp-skills' && ! echo "$out" | grep -qi 'PLACEHOLDER'; then
       pass "$slug install.sh URLs resolve${local_tag:+ (pinned from local tag ${local_tag})}"
     else
       echo "$out"

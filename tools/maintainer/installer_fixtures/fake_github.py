@@ -149,7 +149,7 @@ def main() -> int:
     ap.add_argument("--assets", required=True)
     ap.add_argument("--slug", required=True)
     ap.add_argument("--tag", required=True)
-    ap.add_argument("--owner", default="servosity")
+    ap.add_argument("--owner", default="prajwalstark")
     ap.add_argument("--repo", default="msp-skills")
     ap.add_argument("--immutable", default="true",
                     choices=["true", "false", "missing", "string", "null", "nested", "nested-only", "broken", "nul"])
