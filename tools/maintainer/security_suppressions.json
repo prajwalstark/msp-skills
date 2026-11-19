@@ -353,3 +353,8 @@
     }
   ]
 }
+{
+  "file": "skills/unifi-network/cli/internal/client/client.go",
+  "rule": "G402",
+  "reason": "unifi-network hand patch (see .printing-press-patches/tls-skip-verify-for-local-gateway.md). InsecureSkipVerify is set only when the BaseURL host is 'localhost' or a literal loopback, private (RFC 1918/4193) or link-local IP (config.go isPrivateNetworkHost; DNS names never qualify, parse failures verify), or when the operator sets UNIFI_INSECURE_SKIP_VERIFY. UniFi OS gateways ship self-signed certificates, so verifying by default would break the common LAN case. Accepted residual risk: an attacker on the operator's LAN impersonating the gateway IP could capture the UniFi API key. Stronger fix if ever needed: operator-supplied CA certificate or pinned fingerprint."
+}
