@@ -53,7 +53,7 @@ $Skill   = "action1"
 $CliBin  = "action1-cli.exe"
 $McpBin  = "action1-mcp.exe"
 
-$Owner = if ($env:MSP_SKILLS_OWNER) { $env:MSP_SKILLS_OWNER } else { "servosity" }
+$Owner = if ($env:MSP_SKILLS_OWNER) { $env:MSP_SKILLS_OWNER } else { "prajwalstark" }
 $Repo  = if ($env:MSP_SKILLS_REPO)  { $env:MSP_SKILLS_REPO }  else { "msp-skills" }
 if ($env:MSP_SKILLS_API_BASE) {
   $ApiBase = $env:MSP_SKILLS_API_BASE.TrimEnd('/')

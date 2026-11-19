@@ -53,7 +53,7 @@ SKILL="action1"
 CLI_BIN="action1-cli"
 MCP_BIN="action1-mcp"
 
-OWNER="${MSP_SKILLS_OWNER:-servosity}"
+OWNER="${MSP_SKILLS_OWNER:-prajwalstark}"
 REPO="${MSP_SKILLS_REPO:-msp-skills}"
 INSTALL_DIR="${INSTALL_DIR:-${HOME}/.local/bin}"
 

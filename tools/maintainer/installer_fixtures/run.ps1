@@ -262,14 +262,14 @@ End-Case
 
 Begin-Case "MSP_SKILLS_RELEASE_BASE override cannot claim immutability"
 $script:Assets = Join-Path $Work "assets.rb"; New-Assets $script:Assets; Start-Server $script:Assets
-New-InstallDir "rb"; Invoke-Installer @{ MSP_SKILLS_RELEASE_BASE = "$($script:ApiBase)/servosity/msp-skills/releases/download/$Tag" }
+New-InstallDir "rb"; Invoke-Installer @{ MSP_SKILLS_RELEASE_BASE = "$($script:ApiBase)/prajwalstark/msp-skills/releases/download/$Tag" }
 Check "non-zero" ($script:Rc -ne 0); Check "override named" (OutHas "MSP_SKILLS_RELEASE_BASE is set")
 Check "unchanged" (Unchanged); Check "clean" (Clean); Check "no API call" (LogLacks "/repos/")
 End-Case
 
 Begin-Case "MSP_SKILLS_RELEASE_BASE override with the hatch installs (hashes still verified)"
 $script:Assets = Join-Path $Work "assets.rbh"; New-Assets $script:Assets; Start-Server $script:Assets
-New-InstallDir "rbh"; Invoke-Installer @{ MSP_SKILLS_RELEASE_BASE = "$($script:ApiBase)/servosity/msp-skills/releases/download/$Tag"; MSP_SKILLS_ALLOW_MUTABLE = "1" }
+New-InstallDir "rbh"; Invoke-Installer @{ MSP_SKILLS_RELEASE_BASE = "$($script:ApiBase)/prajwalstark/msp-skills/releases/download/$Tag"; MSP_SKILLS_ALLOW_MUTABLE = "1" }
 Check "exit 0" ($script:Rc -eq 0); Check "installed" (Installed); Check "clean" (Clean); Check "no API call" (LogLacks "/repos/")
 End-Case
 
@@ -358,8 +358,8 @@ Begin-Case "DRY_RUN=1 exits 0, prints URLs, creates nothing, consults no tag/dow
 $script:Assets = Join-Path $Work "assets.dry"; New-Assets $script:Assets; Start-Server $script:Assets
 $script:Dir = Join-Path $Work "cases\dry\never-created"; Invoke-Installer @{ MSP_SKILLS_API_BASE = $script:ApiBase; DRY_RUN = "1" }
 Check "exit 0" ($script:Rc -eq 0)
-Check "CLI URL printed" (OutHas "CLI URL:      $($script:ApiBase)/servosity/msp-skills/releases/download/$Tag/$CliAsset")
-Check "MCP URL printed" (OutHas "MCP URL:      $($script:ApiBase)/servosity/msp-skills/releases/download/$Tag/$McpAsset")
+Check "CLI URL printed" (OutHas "CLI URL:      $($script:ApiBase)/prajwalstark/msp-skills/releases/download/$Tag/$CliAsset")
+Check "MCP URL printed" (OutHas "MCP URL:      $($script:ApiBase)/prajwalstark/msp-skills/releases/download/$Tag/$McpAsset")
 Check "install dir not created" (-not (Test-Path -LiteralPath $script:Dir))
 Check "no tag fetch" (LogLacks "/releases/tags/"); Check "no download" (LogLacks "/releases/download/")
 End-Case

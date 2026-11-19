@@ -53,7 +53,7 @@ SKILL="pax8"
 CLI_BIN="pax8-cli"
 MCP_BIN="pax8-mcp"
 
-OWNER="${MSP_SKILLS_OWNER:-servosity}"
+OWNER="${MSP_SKILLS_OWNER:-prajwalstark}"
 REPO="${MSP_SKILLS_REPO:-msp-skills}"
 INSTALL_DIR="${INSTALL_DIR:-${HOME}/.local/bin}"
 

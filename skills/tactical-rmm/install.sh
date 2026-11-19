@@ -53,7 +53,7 @@ SKILL="tactical-rmm"
 CLI_BIN="tactical-rmm-cli"
 MCP_BIN="tactical-rmm-mcp"
 
-OWNER="${MSP_SKILLS_OWNER:-servosity}"
+OWNER="${MSP_SKILLS_OWNER:-prajwalstark}"
 REPO="${MSP_SKILLS_REPO:-msp-skills}"
 INSTALL_DIR="${INSTALL_DIR:-${HOME}/.local/bin}"
 

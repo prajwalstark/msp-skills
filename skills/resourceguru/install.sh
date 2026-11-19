@@ -53,7 +53,7 @@ SKILL="resourceguru"
 CLI_BIN="resourceguru-cli"
 MCP_BIN="resourceguru-mcp"
 
-OWNER="${MSP_SKILLS_OWNER:-servosity}"
+OWNER="${MSP_SKILLS_OWNER:-prajwalstark}"
 REPO="${MSP_SKILLS_REPO:-msp-skills}"
 INSTALL_DIR="${INSTALL_DIR:-${HOME}/.local/bin}"
 

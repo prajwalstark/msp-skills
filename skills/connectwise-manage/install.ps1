@@ -53,7 +53,7 @@ $Skill   = "connectwise-manage"
 $CliBin  = "connectwise-manage-cli.exe"
 $McpBin  = "connectwise-manage-mcp.exe"
 
-$Owner = if ($env:MSP_SKILLS_OWNER) { $env:MSP_SKILLS_OWNER } else { "servosity" }
+$Owner = if ($env:MSP_SKILLS_OWNER) { $env:MSP_SKILLS_OWNER } else { "prajwalstark" }
 $Repo  = if ($env:MSP_SKILLS_REPO)  { $env:MSP_SKILLS_REPO }  else { "msp-skills" }
 if ($env:MSP_SKILLS_API_BASE) {
   $ApiBase = $env:MSP_SKILLS_API_BASE.TrimEnd('/')

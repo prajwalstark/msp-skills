@@ -53,7 +53,7 @@ SKILL="riverside-fm"
 CLI_BIN="riverside-fm-cli"
 MCP_BIN="riverside-fm-mcp"
 
-OWNER="${MSP_SKILLS_OWNER:-servosity}"
+OWNER="${MSP_SKILLS_OWNER:-prajwalstark}"
 REPO="${MSP_SKILLS_REPO:-msp-skills}"
 INSTALL_DIR="${INSTALL_DIR:-${HOME}/.local/bin}"
 

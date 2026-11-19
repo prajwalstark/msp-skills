@@ -5,7 +5,7 @@
 # installs it to ~/.claude/skills/connect-tool. Then reports every dependency and
 # stops at the one step a script cannot do for you: approving the Chrome extension.
 #
-#   curl -fsSL https://raw.githubusercontent.com/servosity/msp-skills/main/skills/connect-tool/bootstrap.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/prajwalstark/msp-skills/main/skills/connect-tool/bootstrap.sh | bash
 #
 # Env vars:
 #   MSP_SKILLS_OWNER / MSP_SKILLS_REPO / MSP_SKILLS_REF   override the source
@@ -13,7 +13,7 @@
 #   DRY_RUN=1                                             print the plan and exit
 set -euo pipefail
 
-OWNER=${MSP_SKILLS_OWNER:-servosity}
+OWNER=${MSP_SKILLS_OWNER:-prajwalstark}
 REPO=${MSP_SKILLS_REPO:-msp-skills}
 REF=${MSP_SKILLS_REF:-main}
 INSTALL_DIR=${INSTALL_DIR:-$HOME/.claude/skills/connect-tool}
