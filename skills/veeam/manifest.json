@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "veeam-mcp",
   "display_name": "Veeam Service Provider Console",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Every Veeam Service Provider Console endpoint as a typed command, plus a local multi-tenant mirror, cross-company rollups, and drift detection no per-instance Veeam tool offers.",
   "author": {
     "name": "Servosity Inc."
@@ -16,7 +16,8 @@
       "args": [],
       "env": {
         "VEEAM_BASE_URL": "${user_config.veeam_base_url}",
-        "VEEAM_TOKEN": "${user_config.veeam_token}"
+        "VEEAM_TOKEN": "${user_config.veeam_token}",
+        "VEEAM_MCP_HTTP_TOKEN": "${user_config.veeam_mcp_http_token}"
       }
     }
   },
@@ -34,6 +35,13 @@
       "description": "Bearer token for the VSPC REST API (POST /token with your portal credentials).",
       "sensitive": true,
       "required": true
+    },
+    "veeam_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

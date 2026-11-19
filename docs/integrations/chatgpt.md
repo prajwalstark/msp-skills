@@ -53,8 +53,11 @@ Install only the skills you'll use.
 HALOPSA_TENANT=<tenant> \
 HALOPSA_CLIENT_ID=<id> \
 HALOPSA_CLIENT_SECRET=<secret> \
-halopsa-mcp --transport http --addr :7777
+HALOPSA_MCP_HTTP_TOKEN=<random-secret> \
+halopsa-mcp --transport http
 ```
+
+Every request must carry `Authorization: Bearer <HALOPSA_MCP_HTTP_TOKEN>` (the server answers 401 otherwise, and refuses to start if the variable is unset). If your client cannot send that header, have your reverse proxy add it after the proxy has authenticated the caller, for example behind Cloudflare Access. Leave `--addr` at its loopback default: a non-loopback bind is refused without `--tls-cert`/`--tls-key`.
 
 The server answers at `http://localhost:7777/mcp`. The bare root returns 404, so the path is part of the endpoint. Expose it via Cloudflare Tunnel:
 

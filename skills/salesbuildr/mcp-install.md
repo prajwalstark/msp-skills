@@ -39,7 +39,8 @@ Add (or merge with your existing `mcpServers` block):
       "env": {
         "SALESBUILDR_API_KEY": "<your-salesbuildr_api_key>",
         "SALESBUILDR_BASE_URL": "",
-        "SALESBUILDR_TENANT": "<your-salesbuildr_tenant>"
+        "SALESBUILDR_TENANT": "<your-salesbuildr_tenant>",
+        "SALESBUILDR_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -66,7 +67,8 @@ Configuration**) and add:
       "env": {
         "SALESBUILDR_API_KEY": "<your-salesbuildr_api_key>",
         "SALESBUILDR_BASE_URL": "",
-        "SALESBUILDR_TENANT": "<your-salesbuildr_tenant>"
+        "SALESBUILDR_TENANT": "<your-salesbuildr_tenant>",
+        "SALESBUILDR_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -89,7 +91,8 @@ Claude Desktop:
       "env": {
         "SALESBUILDR_API_KEY": "<your-salesbuildr_api_key>",
         "SALESBUILDR_BASE_URL": "",
-        "SALESBUILDR_TENANT": "<your-salesbuildr_tenant>"
+        "SALESBUILDR_TENANT": "<your-salesbuildr_tenant>",
+        "SALESBUILDR_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -107,8 +110,10 @@ All remote agents need `salesbuildr-mcp` reachable as a public **HTTPS** endpoin
 in HTTP mode with your credentials in the environment:
 
 ```bash
-SALESBUILDR_API_KEY=<value> SALESBUILDR_BASE_URL=<value> SALESBUILDR_TENANT=<value> salesbuildr-mcp --transport http --addr :7777
+SALESBUILDR_API_KEY=<value> SALESBUILDR_BASE_URL=<value> SALESBUILDR_TENANT=<value> SALESBUILDR_MCP_HTTP_TOKEN=<value> salesbuildr-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <SALESBUILDR_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

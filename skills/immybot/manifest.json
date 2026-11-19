@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "immybot-mcp",
   "display_name": "ImmyBot",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Every ImmyBot endpoint typed, plus a local SQLite mirror that answers the cross-tenant questions the web UI cannot.",
   "author": {
     "name": "Servosity Inc."
@@ -23,7 +23,8 @@
         "IMMYBOT_TOKEN_URL": "${user_config.immybot_token_url}",
         "IMMYBOT_USER_AGENT": "${user_config.immybot_user_agent}",
         "PRINTING_PRESS_CLIENT_PROFILE": "${user_config.printing_press_client_profile}",
-        "IMMYBOT_NO_CONFIG_WRITE": "${user_config.immybot_no_config_write}"
+        "IMMYBOT_NO_CONFIG_WRITE": "${user_config.immybot_no_config_write}",
+        "IMMYBOT_MCP_HTTP_TOKEN": "${user_config.immybot_mcp_http_token}"
       }
     }
   },
@@ -85,6 +86,13 @@
       "description": "Set to 1 to keep credentials off disk. The token cache becomes a no-op, so the connector mints a fresh token each run instead of writing one to config.toml. Leave blank for the default cached behaviour.",
       "required": false,
       "default": ""
+    },
+    "immybot_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

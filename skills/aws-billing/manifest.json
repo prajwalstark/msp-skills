@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "aws-billing-pp-mcp",
   "display_name": "AWS Billing Intelligence",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Get a non-expert from zero to a Slack-delivered, plain-English, waste-flagged AWS bill breakdown  -  and cache it so you don't pay per Cost Explorer call.",
   "author": {
     "name": "Servosity Inc."
@@ -20,7 +20,8 @@
         "AWS_BILLING_SLACK_CHANNEL": "${user_config.aws_billing_slack_channel}",
         "AWS_REGION": "${user_config.aws_region}",
         "AWS_SECRET_ACCESS_KEY": "${user_config.aws_secret_access_key}",
-        "AWS_SESSION_TOKEN": "${user_config.aws_session_token}"
+        "AWS_SESSION_TOKEN": "${user_config.aws_session_token}",
+        "AWS_BILLING_MCP_HTTP_TOKEN": "${user_config.aws_billing_mcp_http_token}"
       }
     }
   },
@@ -65,6 +66,13 @@
       "description": "Session token, required only when the keys above are temporary STS or SSO credentials. Leave blank for long-lived IAM user keys.",
       "sensitive": true,
       "required": false
+    },
+    "aws_billing_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

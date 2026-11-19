@@ -42,7 +42,8 @@ Add (or merge with your existing `mcpServers` block):
         "NINJAONE_CLIENT_SECRET": "<your-ninjaone_client_secret>",
         "NINJAONE_OAUTH_SCOPE": "<your-ninjaone_oauth_scope>",
         "NINJAONE_TOKEN_URL": "https://app.ninjarmm.com/ws/oauth/token",
-        "NINJAONE_NO_CONFIG_WRITE": ""
+        "NINJAONE_NO_CONFIG_WRITE": "",
+        "NINJAONE_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -72,7 +73,8 @@ Configuration**) and add:
         "NINJAONE_CLIENT_SECRET": "<your-ninjaone_client_secret>",
         "NINJAONE_OAUTH_SCOPE": "<your-ninjaone_oauth_scope>",
         "NINJAONE_TOKEN_URL": "https://app.ninjarmm.com/ws/oauth/token",
-        "NINJAONE_NO_CONFIG_WRITE": ""
+        "NINJAONE_NO_CONFIG_WRITE": "",
+        "NINJAONE_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -98,7 +100,8 @@ Claude Desktop:
         "NINJAONE_CLIENT_SECRET": "<your-ninjaone_client_secret>",
         "NINJAONE_OAUTH_SCOPE": "<your-ninjaone_oauth_scope>",
         "NINJAONE_TOKEN_URL": "https://app.ninjarmm.com/ws/oauth/token",
-        "NINJAONE_NO_CONFIG_WRITE": ""
+        "NINJAONE_NO_CONFIG_WRITE": "",
+        "NINJAONE_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -116,8 +119,10 @@ All remote agents need `ninjaone-mcp` reachable as a public **HTTPS** endpoint. 
 in HTTP mode with your credentials in the environment:
 
 ```bash
-NINJAONE_BASE_URL=<value> NINJAONE_CLIENT_ID=<value> NINJAONE_CLIENT_SECRET=<value> NINJAONE_OAUTH_SCOPE=<value> NINJAONE_TOKEN_URL=<value> ninjaone-mcp --transport http --addr :7777
+NINJAONE_BASE_URL=<value> NINJAONE_CLIENT_ID=<value> NINJAONE_CLIENT_SECRET=<value> NINJAONE_OAUTH_SCOPE=<value> NINJAONE_TOKEN_URL=<value> NINJAONE_MCP_HTTP_TOKEN=<value> ninjaone-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <NINJAONE_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

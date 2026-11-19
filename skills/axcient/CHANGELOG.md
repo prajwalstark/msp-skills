@@ -4,6 +4,11 @@ All notable changes to this skill are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/); versions follow
 [semantic versioning](https://semver.org/).
 
+## [0.2.14] - 2026-11-19
+
+### Security
+- **`axcient-mcp --transport http` now requires a bearer token and binds loopback by default.** The HTTP transport used to accept any caller with no credentials, and the install guide ran it with `--addr :7777`, which listens on every network interface: anyone on the same network could open an MCP session and call every tool with your vendor credentials. HTTP mode now refuses to start unless `AXCIENT_MCP_HTTP_TOKEN` is set, answers 401 to any request without a matching `Authorization: Bearer` header, defaults to `127.0.0.1:7777`, and refuses a non-loopback `--addr` unless `--tls-cert` and `--tls-key` are given. The default local stdio transport (Claude Desktop, Claude Code) is unchanged. If you host the server for ChatGPT, Copilot or Gemini, set `AXCIENT_MCP_HTTP_TOKEN`, drop `--addr :7777`, and have your client or reverse proxy send the bearer header.
+
 ## [0.2.13] - 2026-09-28
 
 ### Changed

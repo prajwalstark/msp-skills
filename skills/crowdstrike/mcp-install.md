@@ -42,7 +42,8 @@ Add (or merge with your existing `mcpServers` block):
         "CROWDSTRIKE_TOKEN_URL": "https://api.crowdstrike.com/oauth2/token",
         "FALCON_CLIENT_ID": "<your-falcon_client_id>",
         "FALCON_CLIENT_SECRET": "<your-falcon_client_secret>",
-        "CROWDSTRIKE_NO_CONFIG_WRITE": ""
+        "CROWDSTRIKE_NO_CONFIG_WRITE": "",
+        "CROWDSTRIKE_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -72,7 +73,8 @@ Configuration**) and add:
         "CROWDSTRIKE_TOKEN_URL": "https://api.crowdstrike.com/oauth2/token",
         "FALCON_CLIENT_ID": "<your-falcon_client_id>",
         "FALCON_CLIENT_SECRET": "<your-falcon_client_secret>",
-        "CROWDSTRIKE_NO_CONFIG_WRITE": ""
+        "CROWDSTRIKE_NO_CONFIG_WRITE": "",
+        "CROWDSTRIKE_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -98,7 +100,8 @@ Claude Desktop:
         "CROWDSTRIKE_TOKEN_URL": "https://api.crowdstrike.com/oauth2/token",
         "FALCON_CLIENT_ID": "<your-falcon_client_id>",
         "FALCON_CLIENT_SECRET": "<your-falcon_client_secret>",
-        "CROWDSTRIKE_NO_CONFIG_WRITE": ""
+        "CROWDSTRIKE_NO_CONFIG_WRITE": "",
+        "CROWDSTRIKE_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -116,8 +119,10 @@ All remote agents need `crowdstrike-mcp` reachable as a public **HTTPS** endpoin
 in HTTP mode with your credentials in the environment:
 
 ```bash
-CROWDSTRIKE_BASE_URL=<value> CROWDSTRIKE_OAUTH_SCOPE=<value> CROWDSTRIKE_TOKEN_URL=<value> FALCON_CLIENT_ID=<value> FALCON_CLIENT_SECRET=<value> crowdstrike-mcp --transport http --addr :7777
+CROWDSTRIKE_BASE_URL=<value> CROWDSTRIKE_OAUTH_SCOPE=<value> CROWDSTRIKE_TOKEN_URL=<value> FALCON_CLIENT_ID=<value> FALCON_CLIENT_SECRET=<value> CROWDSTRIKE_MCP_HTTP_TOKEN=<value> crowdstrike-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <CROWDSTRIKE_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

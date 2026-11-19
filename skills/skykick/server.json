@@ -3,7 +3,7 @@
   "name": "io.github.Servosity/skykick-mcp",
   "title": "SkyKick MCP",
   "description": "Fleet backup posture, stale snapshots, and coverage gaps for SkyKick Cloud Backup.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "icons": [
     {
       "src": "https://raw.githubusercontent.com/servosity/msp-skills/main/docs/assets/social/skykick/skykick-512x512.png",
@@ -21,8 +21,8 @@
   "packages": [
     {
       "registryType": "mcpb",
-      "identifier": "https://github.com/servosity/msp-skills/releases/download/skykick-v0.1.4/skykick-mcp.mcpb",
-      "version": "0.1.4",
+      "identifier": "https://github.com/servosity/msp-skills/releases/download/skykick-v0.1.5/skykick-mcp.mcpb",
+      "version": "0.1.5",
       "fileSha256": "PLACEHOLDER_SHA256_FILLED_BY_CI",
       "transport": {
         "type": "stdio"
@@ -65,6 +65,12 @@
           "description": "Set to 1 to keep credentials off disk. The token cache becomes a no-op, so the connector mints a fresh token each run instead of writing one to config.json. Leave blank for the default cached behaviour.",
           "isRequired": false,
           "isSecret": false
+        },
+        {
+          "name": "SKYKICK_MCP_HTTP_TOKEN",
+          "description": "Required only when running the MCP server with --transport http. Not needed for the default local stdio transport.",
+          "isRequired": false,
+          "isSecret": true
         }
       ]
     }

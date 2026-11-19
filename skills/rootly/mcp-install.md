@@ -39,7 +39,8 @@ Add (or merge with your existing `mcpServers` block):
       "env": {
         "ROOTLY_API_KEY": "<your-rootly_api_key>",
         "ROOTLY_API_TOKEN": "<your-rootly_api_token>",
-        "ROOTLY_BASE_URL": "https://api.rootly.com"
+        "ROOTLY_BASE_URL": "https://api.rootly.com",
+        "ROOTLY_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -66,7 +67,8 @@ Configuration**) and add:
       "env": {
         "ROOTLY_API_KEY": "<your-rootly_api_key>",
         "ROOTLY_API_TOKEN": "<your-rootly_api_token>",
-        "ROOTLY_BASE_URL": "https://api.rootly.com"
+        "ROOTLY_BASE_URL": "https://api.rootly.com",
+        "ROOTLY_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -89,7 +91,8 @@ Claude Desktop:
       "env": {
         "ROOTLY_API_KEY": "<your-rootly_api_key>",
         "ROOTLY_API_TOKEN": "<your-rootly_api_token>",
-        "ROOTLY_BASE_URL": "https://api.rootly.com"
+        "ROOTLY_BASE_URL": "https://api.rootly.com",
+        "ROOTLY_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -107,8 +110,10 @@ All remote agents need `rootly-mcp` reachable as a public **HTTPS** endpoint. Ru
 in HTTP mode with your credentials in the environment:
 
 ```bash
-ROOTLY_API_KEY=<value> ROOTLY_API_TOKEN=<value> ROOTLY_BASE_URL=<value> rootly-mcp --transport http --addr :7777
+ROOTLY_API_KEY=<value> ROOTLY_API_TOKEN=<value> ROOTLY_BASE_URL=<value> ROOTLY_MCP_HTTP_TOKEN=<value> rootly-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <ROOTLY_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

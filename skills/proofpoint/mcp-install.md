@@ -39,7 +39,8 @@ Add (or merge with your existing `mcpServers` block):
       "env": {
         "PROOFPOINT_API_SECRET": "<your-proofpoint_api_secret>",
         "PROOFPOINT_BASE_URL": "https://tap-api-v2.proofpoint.com/v2",
-        "PROOFPOINT_SERVICE_PRINCIPAL": "<your-proofpoint_service_principal>"
+        "PROOFPOINT_SERVICE_PRINCIPAL": "<your-proofpoint_service_principal>",
+        "PROOFPOINT_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -66,7 +67,8 @@ Configuration**) and add:
       "env": {
         "PROOFPOINT_API_SECRET": "<your-proofpoint_api_secret>",
         "PROOFPOINT_BASE_URL": "https://tap-api-v2.proofpoint.com/v2",
-        "PROOFPOINT_SERVICE_PRINCIPAL": "<your-proofpoint_service_principal>"
+        "PROOFPOINT_SERVICE_PRINCIPAL": "<your-proofpoint_service_principal>",
+        "PROOFPOINT_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -89,7 +91,8 @@ Claude Desktop:
       "env": {
         "PROOFPOINT_API_SECRET": "<your-proofpoint_api_secret>",
         "PROOFPOINT_BASE_URL": "https://tap-api-v2.proofpoint.com/v2",
-        "PROOFPOINT_SERVICE_PRINCIPAL": "<your-proofpoint_service_principal>"
+        "PROOFPOINT_SERVICE_PRINCIPAL": "<your-proofpoint_service_principal>",
+        "PROOFPOINT_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -107,8 +110,10 @@ All remote agents need `proofpoint-mcp` reachable as a public **HTTPS** endpoint
 in HTTP mode with your credentials in the environment:
 
 ```bash
-PROOFPOINT_API_SECRET=<value> PROOFPOINT_BASE_URL=<value> PROOFPOINT_SERVICE_PRINCIPAL=<value> proofpoint-mcp --transport http --addr :7777
+PROOFPOINT_API_SECRET=<value> PROOFPOINT_BASE_URL=<value> PROOFPOINT_SERVICE_PRINCIPAL=<value> PROOFPOINT_MCP_HTTP_TOKEN=<value> proofpoint-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <PROOFPOINT_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

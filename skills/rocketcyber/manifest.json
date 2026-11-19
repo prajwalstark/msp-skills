@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "rocketcyber-mcp",
   "display_name": "RocketCyber",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "The first CLI and MCP server for RocketCyber Managed SOC, with triage and posture analytics no console page or API call computes.",
   "author": {
     "name": "Servosity Inc."
@@ -16,7 +16,8 @@
       "args": [],
       "env": {
         "ROCKETCYBER_API_TOKEN": "${user_config.rocketcyber_api_token}",
-        "ROCKETCYBER_BASE_URL": "${user_config.rocketcyber_base_url}"
+        "ROCKETCYBER_BASE_URL": "${user_config.rocketcyber_base_url}",
+        "ROCKETCYBER_MCP_HTTP_TOKEN": "${user_config.rocketcyber_mcp_http_token}"
       }
     }
   },
@@ -34,6 +35,13 @@
       "description": "Base URL for the RocketCyber API. Leave the prefilled default unless your account uses a different regional or self-hosted host.",
       "required": false,
       "default": "https://api-us.rocketcyber.com/v3"
+    },
+    "rocketcyber_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "action1-mcp",
   "display_name": "Action1",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Every Action1 endpoint, plus fleet-wide patch and vulnerability views across all your organizations.",
   "author": {
     "name": "Servosity Inc."
@@ -20,7 +20,8 @@
         "ACTION1_CLIENT_SECRET": "${user_config.action1_client_secret}",
         "ACTION1_OAUTH2": "${user_config.action1_oauth2}",
         "ACTION1_ORG_ID": "${user_config.action1_org_id}",
-        "ACTION1_NO_CONFIG_WRITE": "${user_config.action1_no_config_write}"
+        "ACTION1_NO_CONFIG_WRITE": "${user_config.action1_no_config_write}",
+        "ACTION1_MCP_HTTP_TOKEN": "${user_config.action1_mcp_http_token}"
       }
     }
   },
@@ -65,6 +66,13 @@
       "description": "Set to 1 to keep credentials off disk. The token cache becomes a no-op, so the connector mints a fresh token each run instead of writing one to config.toml. Leave blank for the default cached behaviour.",
       "required": false,
       "default": ""
+    },
+    "action1_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "quickbooks-mcp",
   "display_name": "QuickBooks Online",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Every QuickBooks Online Accounting entity, plus an offline SQLite mirror, cross-entity search, and AR/AP aging no SDK or read-only MCP ships.",
   "author": {
     "name": "Servosity Inc."
@@ -22,7 +22,8 @@
         "QUICKBOOKS_ENVIRONMENT": "${user_config.quickbooks_environment}",
         "QUICKBOOKS_REALM_ID": "${user_config.quickbooks_realm_id}",
         "QUICKBOOKS_REFRESH_TOKEN": "${user_config.quickbooks_refresh_token}",
-        "QUICKBOOKS_TOKEN_URL": "${user_config.quickbooks_token_url}"
+        "QUICKBOOKS_TOKEN_URL": "${user_config.quickbooks_token_url}",
+        "QUICKBOOKS_MCP_HTTP_TOKEN": "${user_config.quickbooks_mcp_http_token}"
       }
     }
   },
@@ -80,6 +81,13 @@
       "description": "Token endpoint the client-credentials exchange posts to. Leave the prefilled default unless your tenant uses a different token endpoint.",
       "required": false,
       "default": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer"
+    },
+    "quickbooks_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

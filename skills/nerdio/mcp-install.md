@@ -42,7 +42,8 @@ Add (or merge with your existing `mcpServers` block):
         "NERDIO_CLIENT_ID": "<your-nerdio_client_id>",
         "NERDIO_CLIENT_SECRET": "<your-nerdio_client_secret>",
         "NERDIO_OAUTH_SCOPE": "<your-nerdio_oauth_scope>",
-        "NERDIO_NO_CONFIG_WRITE": ""
+        "NERDIO_NO_CONFIG_WRITE": "",
+        "NERDIO_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -72,7 +73,8 @@ Configuration**) and add:
         "NERDIO_CLIENT_ID": "<your-nerdio_client_id>",
         "NERDIO_CLIENT_SECRET": "<your-nerdio_client_secret>",
         "NERDIO_OAUTH_SCOPE": "<your-nerdio_oauth_scope>",
-        "NERDIO_NO_CONFIG_WRITE": ""
+        "NERDIO_NO_CONFIG_WRITE": "",
+        "NERDIO_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -98,7 +100,8 @@ Claude Desktop:
         "NERDIO_CLIENT_ID": "<your-nerdio_client_id>",
         "NERDIO_CLIENT_SECRET": "<your-nerdio_client_secret>",
         "NERDIO_OAUTH_SCOPE": "<your-nerdio_oauth_scope>",
-        "NERDIO_NO_CONFIG_WRITE": ""
+        "NERDIO_NO_CONFIG_WRITE": "",
+        "NERDIO_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -116,8 +119,10 @@ All remote agents need `nerdio-mcp` reachable as a public **HTTPS** endpoint. Ru
 in HTTP mode with your credentials in the environment:
 
 ```bash
-NERDIO_BASE_URL=<value> NERDIO_CLIENT_ID=<value> NERDIO_CLIENT_SECRET=<value> NERDIO_OAUTH_SCOPE=<value> NERDIO_TOKEN_URL=<value> nerdio-mcp --transport http --addr :7777
+NERDIO_BASE_URL=<value> NERDIO_CLIENT_ID=<value> NERDIO_CLIENT_SECRET=<value> NERDIO_OAUTH_SCOPE=<value> NERDIO_TOKEN_URL=<value> NERDIO_MCP_HTTP_TOKEN=<value> nerdio-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <NERDIO_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

@@ -38,7 +38,8 @@ Add (or merge with your existing `mcpServers` block):
       "command": "afi-mcp",
       "env": {
         "AFI_API_KEY": "<your-afi_api_key>",
-        "AFI_BASE_URL": "https://papi.afi.ai"
+        "AFI_BASE_URL": "https://papi.afi.ai",
+        "AFI_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -64,7 +65,8 @@ Configuration**) and add:
       "command": "afi-mcp",
       "env": {
         "AFI_API_KEY": "<your-afi_api_key>",
-        "AFI_BASE_URL": "https://papi.afi.ai"
+        "AFI_BASE_URL": "https://papi.afi.ai",
+        "AFI_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -86,7 +88,8 @@ Claude Desktop:
       "command": "afi-mcp",
       "env": {
         "AFI_API_KEY": "<your-afi_api_key>",
-        "AFI_BASE_URL": "https://papi.afi.ai"
+        "AFI_BASE_URL": "https://papi.afi.ai",
+        "AFI_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -104,8 +107,10 @@ All remote agents need `afi-mcp` reachable as a public **HTTPS** endpoint. Run i
 in HTTP mode with your credentials in the environment:
 
 ```bash
-AFI_API_KEY=<value> AFI_BASE_URL=<value> afi-mcp --transport http --addr :7777
+AFI_API_KEY=<value> AFI_BASE_URL=<value> AFI_MCP_HTTP_TOKEN=<value> afi-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <AFI_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

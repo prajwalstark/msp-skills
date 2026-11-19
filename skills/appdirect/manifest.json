@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "appdirect-mcp",
   "display_name": "AppDirect",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Every documented AppDirect marketplace operation in one binary, plus offline sync and billing-reconciliation joins.",
   "author": {
     "name": "Servosity Inc."
@@ -20,7 +20,8 @@
         "APPDIRECT_CLIENT_SECRET": "${user_config.appdirect_client_secret}",
         "APPDIRECT_OAUTH_SCOPE": "${user_config.appdirect_oauth_scope}",
         "APPDIRECT_TOKEN_URL": "${user_config.appdirect_token_url}",
-        "APPDIRECT_NO_CONFIG_WRITE": "${user_config.appdirect_no_config_write}"
+        "APPDIRECT_NO_CONFIG_WRITE": "${user_config.appdirect_no_config_write}",
+        "APPDIRECT_MCP_HTTP_TOKEN": "${user_config.appdirect_mcp_http_token}"
       }
     }
   },
@@ -66,6 +67,13 @@
       "description": "Set to 1 to keep credentials off disk. The token cache becomes a no-op, so the connector mints a fresh token each run instead of writing one to config.toml. Leave blank for the default cached behaviour.",
       "required": false,
       "default": ""
+    },
+    "appdirect_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

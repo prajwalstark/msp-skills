@@ -40,7 +40,8 @@ Add (or merge with your existing `mcpServers` block):
         "SUPEROPS_API_TOKEN": "<your-superops_api_token>",
         "SUPEROPS_BASE_URL": "https://api.superops.ai",
         "SUPEROPS_REGION": "us",
-        "SUPEROPS_SUBDOMAIN": "<your-superops_subdomain>"
+        "SUPEROPS_SUBDOMAIN": "<your-superops_subdomain>",
+        "SUPEROPS_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -68,7 +69,8 @@ Configuration**) and add:
         "SUPEROPS_API_TOKEN": "<your-superops_api_token>",
         "SUPEROPS_BASE_URL": "https://api.superops.ai",
         "SUPEROPS_REGION": "us",
-        "SUPEROPS_SUBDOMAIN": "<your-superops_subdomain>"
+        "SUPEROPS_SUBDOMAIN": "<your-superops_subdomain>",
+        "SUPEROPS_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -92,7 +94,8 @@ Claude Desktop:
         "SUPEROPS_API_TOKEN": "<your-superops_api_token>",
         "SUPEROPS_BASE_URL": "https://api.superops.ai",
         "SUPEROPS_REGION": "us",
-        "SUPEROPS_SUBDOMAIN": "<your-superops_subdomain>"
+        "SUPEROPS_SUBDOMAIN": "<your-superops_subdomain>",
+        "SUPEROPS_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -110,8 +113,10 @@ All remote agents need `superops-mcp` reachable as a public **HTTPS** endpoint. 
 in HTTP mode with your credentials in the environment:
 
 ```bash
-SUPEROPS_API_TOKEN=<value> SUPEROPS_BASE_URL=<value> SUPEROPS_REGION=<value> SUPEROPS_SUBDOMAIN=<value> superops-mcp --transport http --addr :7777
+SUPEROPS_API_TOKEN=<value> SUPEROPS_BASE_URL=<value> SUPEROPS_REGION=<value> SUPEROPS_SUBDOMAIN=<value> SUPEROPS_MCP_HTTP_TOKEN=<value> superops-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <SUPEROPS_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

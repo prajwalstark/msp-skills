@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "threatlocker-pp-mcp",
   "display_name": "ThreatLocker",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Every ThreatLocker Portal API feature, plus the write operations the read-only tools lack and a cross-tenant offline store no other ThreatLocker tool has.",
   "author": {
     "name": "Servosity Inc."
@@ -19,7 +19,8 @@
         "THREATLOCKER_API_KEY": "${user_config.threatlocker_api_key}",
         "THREATLOCKER_BASE_URL": "${user_config.threatlocker_base_url}",
         "THREATLOCKER_ORG_ID": "${user_config.threatlocker_org_id}",
-        "THREATLOCKER_USER_AGENT": "${user_config.threatlocker_user_agent}"
+        "THREATLOCKER_USER_AGENT": "${user_config.threatlocker_user_agent}",
+        "THREATLOCKER_MCP_HTTP_TOKEN": "${user_config.threatlocker_mcp_http_token}"
       }
     }
   },
@@ -56,6 +57,13 @@
       "title": "User-Agent header",
       "description": "Overrides the User-Agent the CLI sends on ThreatLocker requests. Leave blank to use the CLI's own built-in User-Agent.",
       "required": false
+    },
+    "threatlocker_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

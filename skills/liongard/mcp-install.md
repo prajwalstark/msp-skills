@@ -59,7 +59,8 @@ Add (or merge with your existing `mcpServers` block):
         "LIONGARD_ACCESS_KEY_SECRET": "",
         "LIONGARD_API_KEY": "<your-liongard_api_key>",
         "LIONGARD_BASE_URL": "",
-        "LIONGARD_INSTANCE": "<your-liongard_instance>"
+        "LIONGARD_INSTANCE": "<your-liongard_instance>",
+        "LIONGARD_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -88,7 +89,8 @@ Configuration**) and add:
         "LIONGARD_ACCESS_KEY_SECRET": "",
         "LIONGARD_API_KEY": "<your-liongard_api_key>",
         "LIONGARD_BASE_URL": "",
-        "LIONGARD_INSTANCE": "<your-liongard_instance>"
+        "LIONGARD_INSTANCE": "<your-liongard_instance>",
+        "LIONGARD_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -113,7 +115,8 @@ Claude Desktop:
         "LIONGARD_ACCESS_KEY_SECRET": "",
         "LIONGARD_API_KEY": "<your-liongard_api_key>",
         "LIONGARD_BASE_URL": "",
-        "LIONGARD_INSTANCE": "<your-liongard_instance>"
+        "LIONGARD_INSTANCE": "<your-liongard_instance>",
+        "LIONGARD_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -134,13 +137,15 @@ Pick **one** of the two credential shapes (see [Two ways to authenticate](#two-w
 
 ```bash
 # A - pre-encoded key. Leave the ID/secret pair unset.
-LIONGARD_API_KEY=<value> LIONGARD_BASE_URL=<value> LIONGARD_INSTANCE=<value> liongard-mcp --transport http --addr :7777
+LIONGARD_API_KEY=<value> LIONGARD_BASE_URL=<value> LIONGARD_INSTANCE=<value> LIONGARD_MCP_HTTP_TOKEN=<value> liongard-mcp --transport http
 ```
 
 ```bash
 # B - ID + secret. Leave LIONGARD_API_KEY unset, or it wins and this pair is ignored.
-LIONGARD_ACCESS_KEY_ID=<value> LIONGARD_ACCESS_KEY_SECRET=<value> LIONGARD_BASE_URL=<value> LIONGARD_INSTANCE=<value> liongard-mcp --transport http --addr :7777
+LIONGARD_ACCESS_KEY_ID=<value> LIONGARD_ACCESS_KEY_SECRET=<value> LIONGARD_BASE_URL=<value> LIONGARD_INSTANCE=<value> LIONGARD_MCP_HTTP_TOKEN=<value> liongard-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <LIONGARD_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

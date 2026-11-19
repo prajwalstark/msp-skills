@@ -42,7 +42,8 @@ Add (or merge with your existing `mcpServers` block):
         "AWS_BILLING_SLACK_CHANNEL": "",
         "AWS_REGION": "us-east-1",
         "AWS_SECRET_ACCESS_KEY": "<your-aws_secret_access_key>",
-        "AWS_SESSION_TOKEN": ""
+        "AWS_SESSION_TOKEN": "",
+        "AWS_BILLING_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -72,7 +73,8 @@ Configuration**) and add:
         "AWS_BILLING_SLACK_CHANNEL": "",
         "AWS_REGION": "us-east-1",
         "AWS_SECRET_ACCESS_KEY": "<your-aws_secret_access_key>",
-        "AWS_SESSION_TOKEN": ""
+        "AWS_SESSION_TOKEN": "",
+        "AWS_BILLING_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -98,7 +100,8 @@ Claude Desktop:
         "AWS_BILLING_SLACK_CHANNEL": "",
         "AWS_REGION": "us-east-1",
         "AWS_SECRET_ACCESS_KEY": "<your-aws_secret_access_key>",
-        "AWS_SESSION_TOKEN": ""
+        "AWS_SESSION_TOKEN": "",
+        "AWS_BILLING_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -116,8 +119,10 @@ All remote agents need `aws-billing-mcp` reachable as a public **HTTPS** endpoin
 in HTTP mode with your credentials in the environment:
 
 ```bash
-AWS_ACCESS_KEY_ID=<value> AWS_BILLING_BASE_URL=<value> AWS_BILLING_SLACK_CHANNEL=<value> AWS_REGION=<value> AWS_SECRET_ACCESS_KEY=<value> AWS_SESSION_TOKEN=<value> TOKEN=<value> aws-billing-mcp --transport http --addr :7777
+AWS_ACCESS_KEY_ID=<value> AWS_BILLING_BASE_URL=<value> AWS_BILLING_SLACK_CHANNEL=<value> AWS_REGION=<value> AWS_SECRET_ACCESS_KEY=<value> AWS_SESSION_TOKEN=<value> TOKEN=<value> AWS_BILLING_MCP_HTTP_TOKEN=<value> aws-billing-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <AWS_BILLING_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

@@ -41,7 +41,8 @@ Add (or merge with your existing `mcpServers` block):
         "UNIFI_API_KEY": "<your-unifi_api_key>",
         "UNIFI_BASE_PATH": "",
         "UNIFI_BASE_URL": "",
-        "UNIFI_GATEWAY_HOST": "<your-unifi_gateway_host>"
+        "UNIFI_GATEWAY_HOST": "<your-unifi_gateway_host>",
+        "UNIFI_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -70,7 +71,8 @@ Configuration**) and add:
         "UNIFI_API_KEY": "<your-unifi_api_key>",
         "UNIFI_BASE_PATH": "",
         "UNIFI_BASE_URL": "",
-        "UNIFI_GATEWAY_HOST": "<your-unifi_gateway_host>"
+        "UNIFI_GATEWAY_HOST": "<your-unifi_gateway_host>",
+        "UNIFI_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -95,7 +97,8 @@ Claude Desktop:
         "UNIFI_API_KEY": "<your-unifi_api_key>",
         "UNIFI_BASE_PATH": "",
         "UNIFI_BASE_URL": "",
-        "UNIFI_GATEWAY_HOST": "<your-unifi_gateway_host>"
+        "UNIFI_GATEWAY_HOST": "<your-unifi_gateway_host>",
+        "UNIFI_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -113,8 +116,10 @@ All remote agents need `unifi-network-mcp` reachable as a public **HTTPS** endpo
 in HTTP mode with your credentials in the environment:
 
 ```bash
-PRINTING_PRESS_CLIENT_PROFILE=<value> UNIFI_API_KEY=<value> UNIFI_BASE_PATH=<value> UNIFI_BASE_URL=<value> UNIFI_GATEWAY_HOST=<value> unifi-network-mcp --transport http --addr :7777
+PRINTING_PRESS_CLIENT_PROFILE=<value> UNIFI_API_KEY=<value> UNIFI_BASE_PATH=<value> UNIFI_BASE_URL=<value> UNIFI_GATEWAY_HOST=<value> UNIFI_MCP_HTTP_TOKEN=<value> unifi-network-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <UNIFI_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

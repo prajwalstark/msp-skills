@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "sherweb-mcp",
   "display_name": "Sherweb",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Every Sherweb Partner API capability, plus a local SQLite store, offline analytics, and margin/drift/orphan joins no other Sherweb tool has.",
   "author": {
     "name": "Servosity Inc."
@@ -21,7 +21,8 @@
         "SHERWEB_OAUTH_SCOPE": "${user_config.sherweb_oauth_scope}",
         "SHERWEB_SUBSCRIPTION_KEY": "${user_config.sherweb_subscription_key}",
         "SHERWEB_TOKEN_URL": "${user_config.sherweb_token_url}",
-        "SHERWEB_NO_CONFIG_WRITE": "${user_config.sherweb_no_config_write}"
+        "SHERWEB_NO_CONFIG_WRITE": "${user_config.sherweb_no_config_write}",
+        "SHERWEB_MCP_HTTP_TOKEN": "${user_config.sherweb_mcp_http_token}"
       }
     }
   },
@@ -74,6 +75,13 @@
       "description": "Set to 1 to keep credentials off disk. The token cache becomes a no-op, so the connector mints a fresh token each run instead of writing one to config.toml. Leave blank for the default cached behaviour.",
       "required": false,
       "default": ""
+    },
+    "sherweb_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

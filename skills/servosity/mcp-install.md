@@ -41,7 +41,8 @@ Add (or merge with your existing `mcpServers` block):
         "SERVOSITY_MSP_BASE_URL": "https://api.servosity.com/api/v1",
         "SERVOSITY_MSP_RESELLER_ID": "",
         "SERVOSITY_MSP_TOKEN": "<your-servosity_msp_token>",
-        "SERVOSITY_MSP_USER_AGENT": ""
+        "SERVOSITY_MSP_USER_AGENT": "",
+        "SERVOSITY_MSP_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -70,7 +71,8 @@ Configuration**) and add:
         "SERVOSITY_MSP_BASE_URL": "https://api.servosity.com/api/v1",
         "SERVOSITY_MSP_RESELLER_ID": "",
         "SERVOSITY_MSP_TOKEN": "<your-servosity_msp_token>",
-        "SERVOSITY_MSP_USER_AGENT": ""
+        "SERVOSITY_MSP_USER_AGENT": "",
+        "SERVOSITY_MSP_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -95,7 +97,8 @@ Claude Desktop:
         "SERVOSITY_MSP_BASE_URL": "https://api.servosity.com/api/v1",
         "SERVOSITY_MSP_RESELLER_ID": "",
         "SERVOSITY_MSP_TOKEN": "<your-servosity_msp_token>",
-        "SERVOSITY_MSP_USER_AGENT": ""
+        "SERVOSITY_MSP_USER_AGENT": "",
+        "SERVOSITY_MSP_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -113,8 +116,10 @@ All remote agents need `servosity-mcp` reachable as a public **HTTPS** endpoint.
 in HTTP mode with your credentials in the environment:
 
 ```bash
-PRINTING_PRESS_CLIENT_PROFILE=<value> SERVOSITY_MSP_BASE_URL=<value> SERVOSITY_MSP_RESELLER_ID=<value> SERVOSITY_MSP_TOKEN=<value> SERVOSITY_MSP_USER_AGENT=<value> servosity-mcp --transport http --addr :7777
+PRINTING_PRESS_CLIENT_PROFILE=<value> SERVOSITY_MSP_BASE_URL=<value> SERVOSITY_MSP_RESELLER_ID=<value> SERVOSITY_MSP_TOKEN=<value> SERVOSITY_MSP_USER_AGENT=<value> SERVOSITY_MSP_MCP_HTTP_TOKEN=<value> servosity-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <SERVOSITY_MSP_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

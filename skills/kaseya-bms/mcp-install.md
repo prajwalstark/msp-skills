@@ -42,7 +42,8 @@ Add (or merge with your existing `mcpServers` block):
         "KASEYA_BMS_PASSWORD": "<your-kaseya_bms_password>",
         "KASEYA_BMS_TENANT": "<your-kaseya_bms_tenant>",
         "KASEYA_BMS_TOKEN": "<your-kaseya_bms_token>",
-        "KASEYA_BMS_USERNAME": "<your-kaseya_bms_username>"
+        "KASEYA_BMS_USERNAME": "<your-kaseya_bms_username>",
+        "KASEYA_BMS_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -72,7 +73,8 @@ Configuration**) and add:
         "KASEYA_BMS_PASSWORD": "<your-kaseya_bms_password>",
         "KASEYA_BMS_TENANT": "<your-kaseya_bms_tenant>",
         "KASEYA_BMS_TOKEN": "<your-kaseya_bms_token>",
-        "KASEYA_BMS_USERNAME": "<your-kaseya_bms_username>"
+        "KASEYA_BMS_USERNAME": "<your-kaseya_bms_username>",
+        "KASEYA_BMS_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -98,7 +100,8 @@ Claude Desktop:
         "KASEYA_BMS_PASSWORD": "<your-kaseya_bms_password>",
         "KASEYA_BMS_TENANT": "<your-kaseya_bms_tenant>",
         "KASEYA_BMS_TOKEN": "<your-kaseya_bms_token>",
-        "KASEYA_BMS_USERNAME": "<your-kaseya_bms_username>"
+        "KASEYA_BMS_USERNAME": "<your-kaseya_bms_username>",
+        "KASEYA_BMS_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -116,8 +119,10 @@ All remote agents need `kaseya-bms-mcp` reachable as a public **HTTPS** endpoint
 in HTTP mode with your credentials in the environment:
 
 ```bash
-KASEYA_BMS_BASE_URL=<value> KASEYA_BMS_BEARER_AUTH=<value> KASEYA_BMS_PASSWORD=<value> KASEYA_BMS_TENANT=<value> KASEYA_BMS_TOKEN=<value> KASEYA_BMS_USERNAME=<value> kaseya-bms-mcp --transport http --addr :7777
+KASEYA_BMS_BASE_URL=<value> KASEYA_BMS_BEARER_AUTH=<value> KASEYA_BMS_PASSWORD=<value> KASEYA_BMS_TENANT=<value> KASEYA_BMS_TOKEN=<value> KASEYA_BMS_USERNAME=<value> KASEYA_BMS_MCP_HTTP_TOKEN=<value> kaseya-bms-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <KASEYA_BMS_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

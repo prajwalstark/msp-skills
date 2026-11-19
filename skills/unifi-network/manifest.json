@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "unifi-network-pp-mcp",
   "display_name": "UniFi",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Every UniFi Network API operation, plus drift detection, topology, and rule prediction no other UniFi tool has.",
   "author": {
     "name": "Servosity Inc."
@@ -19,7 +19,8 @@
         "UNIFI_API_KEY": "${user_config.unifi_api_key}",
         "UNIFI_BASE_PATH": "${user_config.unifi_base_path}",
         "UNIFI_BASE_URL": "${user_config.unifi_base_url}",
-        "UNIFI_GATEWAY_HOST": "${user_config.unifi_gateway_host}"
+        "UNIFI_GATEWAY_HOST": "${user_config.unifi_gateway_host}",
+        "UNIFI_MCP_HTTP_TOKEN": "${user_config.unifi_mcp_http_token}"
       }
     }
   },
@@ -55,6 +56,13 @@
       "title": "UniFi API base URL",
       "description": "Full API base URL, e.g. https://10.0.0.1/proxy/network. Leave blank when you set the gateway host above; the CLI builds this from it.",
       "required": false
+    },
+    "unifi_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

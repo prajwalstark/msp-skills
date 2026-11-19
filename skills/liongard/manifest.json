@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "liongard-mcp",
   "display_name": "Liongard",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Every Liongard endpoint, plus an offline copy of your whole MSP estate you can join, search, and drift-check from one command.",
   "author": {
     "name": "Servosity Inc."
@@ -19,7 +19,8 @@
         "LIONGARD_ACCESS_KEY_SECRET": "${user_config.liongard_access_key_secret}",
         "LIONGARD_API_KEY": "${user_config.liongard_api_key}",
         "LIONGARD_BASE_URL": "${user_config.liongard_base_url}",
-        "LIONGARD_INSTANCE": "${user_config.liongard_instance}"
+        "LIONGARD_INSTANCE": "${user_config.liongard_instance}",
+        "LIONGARD_MCP_HTTP_TOKEN": "${user_config.liongard_mcp_http_token}"
       }
     }
   },
@@ -57,6 +58,13 @@
       "description": "Liongard Access Key Secret, the other half of LIONGARD_ACCESS_KEY_ID. One of two ways to authenticate - set EITHER this pair OR the pre-encoded LIONGARD_API_KEY, never both. LIONGARD_API_KEY wins when it is set, so leave it blank to use this pair.",
       "sensitive": true,
       "required": false
+    },
+    "liongard_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

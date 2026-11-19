@@ -38,7 +38,8 @@ Add (or merge with your existing `mcpServers` block):
       "command": "veeam-mcp",
       "env": {
         "VEEAM_BASE_URL": "<your-veeam_base_url>",
-        "VEEAM_TOKEN": "<your-veeam_token>"
+        "VEEAM_TOKEN": "<your-veeam_token>",
+        "VEEAM_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -64,7 +65,8 @@ Configuration**) and add:
       "command": "veeam-mcp",
       "env": {
         "VEEAM_BASE_URL": "<your-veeam_base_url>",
-        "VEEAM_TOKEN": "<your-veeam_token>"
+        "VEEAM_TOKEN": "<your-veeam_token>",
+        "VEEAM_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -86,7 +88,8 @@ Claude Desktop:
       "command": "veeam-mcp",
       "env": {
         "VEEAM_BASE_URL": "<your-veeam_base_url>",
-        "VEEAM_TOKEN": "<your-veeam_token>"
+        "VEEAM_TOKEN": "<your-veeam_token>",
+        "VEEAM_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -104,8 +107,10 @@ All remote agents need `veeam-mcp` reachable as a public **HTTPS** endpoint. Run
 in HTTP mode with your credentials in the environment:
 
 ```bash
-VEEAM_BASE_URL=<value> VEEAM_TOKEN=<value> veeam-mcp --transport http --addr :7777
+VEEAM_BASE_URL=<value> VEEAM_TOKEN=<value> VEEAM_MCP_HTTP_TOKEN=<value> veeam-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <VEEAM_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

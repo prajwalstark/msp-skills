@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "datto-rmm-mcp",
   "display_name": "Datto RMM",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Every Datto RMM API operation, plus a local SQLite fleet store and fleet-wide analytics no other Datto tool has.",
   "author": {
     "name": "Servosity Inc."
@@ -20,7 +20,8 @@
         "DATTO_RMM_BASE_URL": "${user_config.datto_rmm_base_url}",
         "DATTO_RMM_PLATFORM": "${user_config.datto_rmm_platform}",
         "DATTO_RMM_TOKEN": "${user_config.datto_rmm_token}",
-        "DATTO_RMM_NO_CONFIG_WRITE": "${user_config.datto_rmm_no_config_write}"
+        "DATTO_RMM_NO_CONFIG_WRITE": "${user_config.datto_rmm_no_config_write}",
+        "DATTO_RMM_MCP_HTTP_TOKEN": "${user_config.datto_rmm_mcp_http_token}"
       }
     }
   },
@@ -64,6 +65,13 @@
       "description": "Set to 1 to keep credentials off disk. The token cache becomes a no-op, so the connector mints a fresh token each run instead of writing one to config.toml. Leave blank for the default cached behaviour.",
       "required": false,
       "default": ""
+    },
+    "datto_rmm_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

@@ -40,7 +40,8 @@ Add (or merge with your existing `mcpServers` block):
         "AUTOTASK_API_INTEGRATION_CODE": "<your-autotask_api_integration_code>",
         "AUTOTASK_BASE_URL": "https://webservices5.autotask.net/atservicesrest/V1.0",
         "AUTOTASK_PSA_SECRET": "<your-autotask_psa_secret>",
-        "AUTOTASK_PSA_USER_NAME": "<your-autotask_psa_user_name>"
+        "AUTOTASK_PSA_USER_NAME": "<your-autotask_psa_user_name>",
+        "AUTOTASK_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -68,7 +69,8 @@ Configuration**) and add:
         "AUTOTASK_API_INTEGRATION_CODE": "<your-autotask_api_integration_code>",
         "AUTOTASK_BASE_URL": "https://webservices5.autotask.net/atservicesrest/V1.0",
         "AUTOTASK_PSA_SECRET": "<your-autotask_psa_secret>",
-        "AUTOTASK_PSA_USER_NAME": "<your-autotask_psa_user_name>"
+        "AUTOTASK_PSA_USER_NAME": "<your-autotask_psa_user_name>",
+        "AUTOTASK_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -92,7 +94,8 @@ Claude Desktop:
         "AUTOTASK_API_INTEGRATION_CODE": "<your-autotask_api_integration_code>",
         "AUTOTASK_BASE_URL": "https://webservices5.autotask.net/atservicesrest/V1.0",
         "AUTOTASK_PSA_SECRET": "<your-autotask_psa_secret>",
-        "AUTOTASK_PSA_USER_NAME": "<your-autotask_psa_user_name>"
+        "AUTOTASK_PSA_USER_NAME": "<your-autotask_psa_user_name>",
+        "AUTOTASK_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -110,8 +113,10 @@ All remote agents need `autotask-mcp` reachable as a public **HTTPS** endpoint. 
 in HTTP mode with your credentials in the environment:
 
 ```bash
-AUTOTASK_API_INTEGRATION_CODE=<value> AUTOTASK_BASE_URL=<value> AUTOTASK_PSA_SECRET=<value> AUTOTASK_PSA_USER_NAME=<value> autotask-mcp --transport http --addr :7777
+AUTOTASK_API_INTEGRATION_CODE=<value> AUTOTASK_BASE_URL=<value> AUTOTASK_PSA_SECRET=<value> AUTOTASK_PSA_USER_NAME=<value> AUTOTASK_MCP_HTTP_TOKEN=<value> autotask-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <AUTOTASK_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

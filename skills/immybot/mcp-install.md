@@ -45,7 +45,8 @@ Add (or merge with your existing `mcpServers` block):
         "IMMYBOT_TOKEN_URL": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
         "IMMYBOT_USER_AGENT": "",
         "PRINTING_PRESS_CLIENT_PROFILE": "",
-        "IMMYBOT_NO_CONFIG_WRITE": ""
+        "IMMYBOT_NO_CONFIG_WRITE": "",
+        "IMMYBOT_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -78,7 +79,8 @@ Configuration**) and add:
         "IMMYBOT_TOKEN_URL": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
         "IMMYBOT_USER_AGENT": "",
         "PRINTING_PRESS_CLIENT_PROFILE": "",
-        "IMMYBOT_NO_CONFIG_WRITE": ""
+        "IMMYBOT_NO_CONFIG_WRITE": "",
+        "IMMYBOT_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -107,7 +109,8 @@ Claude Desktop:
         "IMMYBOT_TOKEN_URL": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
         "IMMYBOT_USER_AGENT": "",
         "PRINTING_PRESS_CLIENT_PROFILE": "",
-        "IMMYBOT_NO_CONFIG_WRITE": ""
+        "IMMYBOT_NO_CONFIG_WRITE": "",
+        "IMMYBOT_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -126,8 +129,10 @@ in HTTP mode with your credentials in the environment:
 
 ```bash
 IMMYBOT_SUBDOMAIN=<value> IMMYBOT_TENANT_ID=<value> IMMYBOT_CLIENT_ID=<value> IMMYBOT_CLIENT_SECRET=<value> \
-  IMMYBOT_BASE_URL=<value> IMMYBOT_CLIENT_ID=<value> IMMYBOT_CLIENT_SECRET=<value> IMMYBOT_SUBDOMAIN=<value> IMMYBOT_TENANT_ID=<value> IMMYBOT_TOKEN_URL=<value> IMMYBOT_USER_AGENT=<value> PRINTING_PRESS_CLIENT_PROFILE=<value> immybot-mcp --transport http --addr :7777
+  IMMYBOT_BASE_URL=<value> IMMYBOT_CLIENT_ID=<value> IMMYBOT_CLIENT_SECRET=<value> IMMYBOT_SUBDOMAIN=<value> IMMYBOT_TENANT_ID=<value> IMMYBOT_TOKEN_URL=<value> IMMYBOT_USER_AGENT=<value> PRINTING_PRESS_CLIENT_PROFILE=<value> IMMYBOT_MCP_HTTP_TOKEN=<value> immybot-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <IMMYBOT_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

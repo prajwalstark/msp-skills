@@ -54,7 +54,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but abnormal-mcp speaks HTTP natively: run `abnormal-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but abnormal-mcp speaks HTTP natively: run `abnormal-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Abnormal Security data safe?
@@ -94,7 +94,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but acronis-mcp speaks HTTP natively: run `acronis-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but acronis-mcp speaks HTTP natively: run `acronis-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Acronis data safe?
@@ -136,7 +136,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but action1-mcp speaks HTTP natively: run `action1-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but action1-mcp speaks HTTP natively: run `action1-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Action1 data safe?
@@ -169,7 +169,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but afi-mcp speaks HTTP natively: run `afi-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but afi-mcp speaks HTTP natively: run `afi-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Afi data safe?
@@ -205,7 +205,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but appdirect-mcp speaks HTTP natively: run `appdirect-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but appdirect-mcp speaks HTTP natively: run `appdirect-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my AppDirect data safe?
@@ -241,7 +241,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but atera-mcp speaks HTTP natively: run `atera-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but atera-mcp speaks HTTP natively: run `atera-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Atera data safe?
@@ -278,7 +278,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but autotask-mcp speaks HTTP natively: run `autotask-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but autotask-mcp speaks HTTP natively: run `autotask-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Autotask data safe?
@@ -318,7 +318,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but auvik-mcp speaks HTTP natively: run `auvik-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but auvik-mcp speaks HTTP natively: run `auvik-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your Auvik user email and API key once.
 Q: Why does it need both a username and an API key?
@@ -393,7 +393,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but aws-billing-mcp speaks HTTP natively: run `aws-billing-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but aws-billing-mcp speaks HTTP natively: run `aws-billing-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your AWS credentials once.
 Q: Is my AWS data safe?
@@ -433,7 +433,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but axcient-mcp speaks HTTP natively: run `axcient-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but axcient-mcp speaks HTTP natively: run `axcient-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Axcient data safe?
@@ -473,7 +473,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but betterstack-mcp speaks HTTP natively: run `betterstack-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but betterstack-mcp speaks HTTP natively: run `betterstack-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Better Stack data safe?
@@ -546,7 +546,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but cipp-mcp speaks HTTP natively: run `cipp-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but cipp-mcp speaks HTTP natively: run `cipp-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my CIPP data safe?
@@ -637,7 +637,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but connectwise-control-mcp speaks HTTP natively: run `connectwise-control-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but connectwise-control-mcp speaks HTTP natively: run `connectwise-control-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my ConnectWise Control data safe?
@@ -673,7 +673,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but connectwise-manage-mcp speaks HTTP natively: run `connectwise-manage-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but connectwise-manage-mcp speaks HTTP natively: run `connectwise-manage-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my ConnectWise Manage data safe?
@@ -748,7 +748,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but cove-mcp speaks HTTP natively: run `cove-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but cove-mcp speaks HTTP natively: run `cove-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Cove Data Protection data safe?
@@ -784,7 +784,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but crowdstrike-mcp speaks HTTP natively: run `crowdstrike-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but crowdstrike-mcp speaks HTTP natively: run `crowdstrike-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my CrowdStrike data safe?
@@ -837,7 +837,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but datto-bcdr-mcp speaks HTTP natively: run `datto-bcdr-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but datto-bcdr-mcp speaks HTTP natively: run `datto-bcdr-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Datto BCDR data safe?
@@ -875,7 +875,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but datto-rmm-mcp speaks HTTP natively: run `datto-rmm-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but datto-rmm-mcp speaks HTTP natively: run `datto-rmm-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Datto RMM data safe?
@@ -911,7 +911,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but domotz-mcp speaks HTTP natively: run `domotz-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but domotz-mcp speaks HTTP natively: run `domotz-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Domotz data safe?
@@ -962,7 +962,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but gradient-mcp speaks HTTP natively: run `gradient-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but gradient-mcp speaks HTTP natively: run `gradient-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Gradient MSP data safe?
@@ -996,7 +996,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on Plus, Pro, Team, Business, Enterprise, and Education plans (the Free tier does not yet expose Developer Mode). ChatGPT connects to remote MCP servers over HTTPS, not local stdio binaries, but halopsa-mcp speaks HTTP natively: start it with `halopsa-mcp --transport http --addr :7777` and put the /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. No bridge package is involved. Step-by-step in mcp-install.md.
+A: Yes, on Plus, Pro, Team, Business, Enterprise, and Education plans (the Free tier does not yet expose Developer Mode). ChatGPT connects to remote MCP servers over HTTPS, not local stdio binaries, but halopsa-mcp speaks HTTP natively: start it with `halopsa-mcp --transport http` and put the /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. No bridge package is involved. Step-by-step in mcp-install.md.
 Q: Do I need to know how to code?
 A: No. The recommended install is to paste one sentence into Claude Code or Codex and your agent reads SKILL.md and does the install. The fallback is a one-line installer per OS (bash or PowerShell). You enter your HaloPSA API credentials once.
 Q: Is my HaloPSA data safe?
@@ -1070,7 +1070,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but hudu-mcp speaks HTTP natively: run `hudu-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but hudu-mcp speaks HTTP natively: run `hudu-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Hudu data safe?
@@ -1140,7 +1140,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but immybot-mcp speaks HTTP natively: run `immybot-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but immybot-mcp speaks HTTP natively: run `immybot-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: What does it cost?
@@ -1176,7 +1176,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but itglue-mcp speaks HTTP natively: run `itglue-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but itglue-mcp speaks HTTP natively: run `itglue-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my IT Glue data safe?
@@ -1214,7 +1214,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but kaseya-bms-mcp speaks HTTP natively: run `kaseya-bms-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but kaseya-bms-mcp speaks HTTP natively: run `kaseya-bms-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Kaseya BMS data safe?
@@ -1252,7 +1252,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but knowbe4-mcp speaks HTTP natively: run `knowbe4-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but knowbe4-mcp speaks HTTP natively: run `knowbe4-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my KnowBe4 data safe?
@@ -1324,7 +1324,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but liongard-mcp speaks HTTP natively: run `liongard-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but liongard-mcp speaks HTTP natively: run `liongard-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Liongard data safe?
@@ -1357,7 +1357,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but maxio-mcp speaks HTTP natively: run `maxio-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but maxio-mcp speaks HTTP natively: run `maxio-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Maxio data safe?
@@ -1392,7 +1392,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but microsoft-graph-mcp speaks HTTP natively: run `microsoft-graph-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but microsoft-graph-mcp speaks HTTP natively: run `microsoft-graph-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Microsoft 365 data safe?
@@ -1435,7 +1435,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but mspbots-mcp speaks HTTP natively: run `mspbots-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but mspbots-mcp speaks HTTP natively: run `mspbots-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my MSPbots data safe?
@@ -1517,7 +1517,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but nerdio-mcp speaks HTTP natively: run `nerdio-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but nerdio-mcp speaks HTTP natively: run `nerdio-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Nerdio Manager data safe?
@@ -1555,7 +1555,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but ninjaone-mcp speaks HTTP natively: run `ninjaone-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but ninjaone-mcp speaks HTTP natively: run `ninjaone-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my NinjaOne data safe?
@@ -1595,7 +1595,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but pagerduty-mcp speaks HTTP natively: run `pagerduty-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but pagerduty-mcp speaks HTTP natively: run `pagerduty-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my PagerDuty data safe?
@@ -1631,7 +1631,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but pandadoc-mcp speaks HTTP natively: run `pandadoc-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but pandadoc-mcp speaks HTTP natively: run `pandadoc-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my PandaDoc data safe?
@@ -1667,7 +1667,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but pax8-mcp speaks HTTP natively: run `pax8-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but pax8-mcp speaks HTTP natively: run `pax8-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Pax8 data safe?
@@ -1705,7 +1705,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but pipedrive-mcp speaks HTTP natively: run `pipedrive-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but pipedrive-mcp speaks HTTP natively: run `pipedrive-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Pipedrive data safe?
@@ -1741,7 +1741,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but proofpoint-mcp speaks HTTP natively: run `proofpoint-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but proofpoint-mcp speaks HTTP natively: run `proofpoint-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Proofpoint data safe?
@@ -1779,7 +1779,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but quickbooks-mcp speaks HTTP natively: run `quickbooks-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but quickbooks-mcp speaks HTTP natively: run `quickbooks-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my QuickBooks Online data safe?
@@ -1812,7 +1812,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but resourceguru-mcp speaks HTTP natively: run `resourceguru-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but resourceguru-mcp speaks HTTP natively: run `resourceguru-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Resource Guru data safe?
@@ -1846,7 +1846,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but rewst-mcp speaks HTTP natively: run `rewst-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but rewst-mcp speaks HTTP natively: run `rewst-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Rewst data safe?
@@ -1917,7 +1917,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but rocketcyber-mcp speaks HTTP natively: run `rocketcyber-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but rocketcyber-mcp speaks HTTP natively: run `rocketcyber-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your RocketCyber API token once.
 Q: Is my RocketCyber data safe?
@@ -1951,7 +1951,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but rootly-mcp speaks HTTP natively: run `rootly-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but rootly-mcp speaks HTTP natively: run `rootly-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Rootly data safe?
@@ -1985,7 +1985,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but runzero-mcp speaks HTTP natively: run `runzero-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but runzero-mcp speaks HTTP natively: run `runzero-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your runZero API key once.
 Q: Is my runZero data safe?
@@ -2021,7 +2021,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but salesbuildr-mcp speaks HTTP natively: run `salesbuildr-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but salesbuildr-mcp speaks HTTP natively: run `salesbuildr-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Salesbuildr data safe?
@@ -2057,7 +2057,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but sentinelone-mcp speaks HTTP natively: run `sentinelone-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but sentinelone-mcp speaks HTTP natively: run `sentinelone-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my SentinelOne data safe?
@@ -2095,7 +2095,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but servosity-mcp speaks HTTP natively: run `servosity-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but servosity-mcp speaks HTTP natively: run `servosity-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Servosity and client data safe?
@@ -2134,7 +2134,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but sherweb-mcp speaks HTTP natively: run `sherweb-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but sherweb-mcp speaks HTTP natively: run `sherweb-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Sherweb data safe?
@@ -2170,7 +2170,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but skykick-mcp speaks HTTP natively: run `skykick-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but skykick-mcp speaks HTTP natively: run `skykick-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my SkyKick data safe?
@@ -2202,7 +2202,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but superops-mcp speaks HTTP natively: run `superops-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but superops-mcp speaks HTTP natively: run `superops-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my SuperOps data safe?
@@ -2239,7 +2239,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but syncro-mcp speaks HTTP natively: run `syncro-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but syncro-mcp speaks HTTP natively: run `syncro-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Syncro data safe?
@@ -2278,7 +2278,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but tactical-rmm-mcp speaks HTTP natively: run `tactical-rmm-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but tactical-rmm-mcp speaks HTTP natively: run `tactical-rmm-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Tactical RMM data safe?
@@ -2316,7 +2316,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but threatlocker-mcp speaks HTTP natively: run `threatlocker-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but threatlocker-mcp speaks HTTP natively: run `threatlocker-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my ThreatLocker data safe?
@@ -2354,7 +2354,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but unifi-network-mcp speaks HTTP natively: run `unifi-network-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but unifi-network-mcp speaks HTTP natively: run `unifi-network-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my UniFi data safe?
@@ -2389,7 +2389,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but veeam-mcp speaks HTTP natively: run `veeam-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but veeam-mcp speaks HTTP natively: run `veeam-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Veeam data safe?
@@ -2462,7 +2462,7 @@ Outcomes (question -> command your AI agent runs):
 
 FAQ:
 Q: Does this work with ChatGPT?
-A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but xero-mcp speaks HTTP natively: run `xero-mcp --transport http --addr :7777` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
+A: Yes, on paid ChatGPT plans. ChatGPT connects to remote MCP servers over HTTPS, but xero-mcp speaks HTTP natively: run `xero-mcp --transport http` and put its /mcp endpoint behind an HTTPS tunnel or your own reverse proxy. Step-by-step in the install guide.
 Q: Do I need to know how to code?
 A: No. Paste one sentence into Claude Code or Codex and your agent does the install, or run a one-line installer. You enter your credentials once.
 Q: Is my Xero data safe?

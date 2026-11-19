@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "connectwise-manage-mcp",
   "display_name": "ConnectWise PSA",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Every ConnectWise PSA workflow from the terminal \u2014 with a typed conditions query builder, offline SQLite sync, and cross-entity views (unbilled work, account 360, board triage) the PSA web UI can't give you.",
   "author": {
     "name": "Servosity Inc."
@@ -21,7 +21,8 @@
         "CW_COMPANY_ID": "${user_config.cw_company_id}",
         "CW_PRIVATE_KEY": "${user_config.cw_private_key}",
         "CW_PUBLIC_KEY": "${user_config.cw_public_key}",
-        "CW_SITE": "${user_config.cw_site}"
+        "CW_SITE": "${user_config.cw_site}",
+        "CONNECTWISE_MANAGE_MCP_HTTP_TOKEN": "${user_config.connectwise_manage_mcp_http_token}"
       },
       "platform_overrides": {
         "darwin": {
@@ -82,6 +83,13 @@
       "title": "ConnectWise API version",
       "description": "Pins the ConnectWise Manage API version sent on each request, e.g. 2025.1. Leave blank to use the version your instance defaults to.",
       "required": false
+    },
+    "connectwise_manage_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

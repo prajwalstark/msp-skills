@@ -3,7 +3,7 @@
   "name": "io.github.Servosity/servosity-mcp",
   "title": "Servosity MCP",
   "description": "Fleet-wide backup triage, stale-backup detection, and cross-engine analytics for any MCP agent.",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "icons": [
     {
       "src": "https://raw.githubusercontent.com/servosity/msp-skills/main/docs/assets/social/servosity/servosity-512x512.png",
@@ -21,8 +21,8 @@
   "packages": [
     {
       "registryType": "mcpb",
-      "identifier": "https://github.com/servosity/msp-skills/releases/download/servosity-v0.6.6/servosity-mcp.mcpb",
-      "version": "0.6.6",
+      "identifier": "https://github.com/servosity/msp-skills/releases/download/servosity-v0.6.7/servosity-mcp.mcpb",
+      "version": "0.6.7",
       "fileSha256": "PLACEHOLDER_SHA256_FILLED_BY_CI",
       "transport": {
         "type": "stdio"
@@ -58,6 +58,12 @@
           "description": "Overrides the User-Agent the CLI sends on Servosity requests. Leave blank to use the CLI's own built-in User-Agent.",
           "isRequired": false,
           "isSecret": false
+        },
+        {
+          "name": "SERVOSITY_MSP_MCP_HTTP_TOKEN",
+          "description": "Required only when running the MCP server with --transport http. Not needed for the default local stdio transport.",
+          "isRequired": false,
+          "isSecret": true
         }
       ]
     }

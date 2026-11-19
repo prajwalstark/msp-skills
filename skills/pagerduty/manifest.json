@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "pagerduty-mcp",
   "display_name": "PagerDuty",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Every PagerDuty incident, on-call and service operation from the terminal, plus a local SQLite mirror that answers cross-entity questions \u2014 MTTA/MTTR, on-call coverage gaps, responder load \u2014 that neither the API nor the web UI can.",
   "author": {
     "name": "Servosity Inc."
@@ -16,7 +16,8 @@
       "args": [],
       "env": {
         "PAGERDUTY_API_KEY": "${user_config.pagerduty_api_key}",
-        "PAGERDUTY_BASE_URL": "${user_config.pagerduty_base_url}"
+        "PAGERDUTY_BASE_URL": "${user_config.pagerduty_base_url}",
+        "PAGERDUTY_MCP_HTTP_TOKEN": "${user_config.pagerduty_mcp_http_token}"
       }
     }
   },
@@ -34,6 +35,13 @@
       "description": "Base URL for the PagerDuty API. Leave the prefilled default unless your account uses a different regional or self-hosted host.",
       "required": false,
       "default": "https://api.pagerduty.com"
+    },
+    "pagerduty_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

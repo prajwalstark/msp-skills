@@ -38,7 +38,8 @@ Add (or merge with your existing `mcpServers` block):
       "command": "tactical-rmm-mcp",
       "env": {
         "TACTICAL_RMM_BASE_URL": "<your-tactical_rmm_base_url>",
-        "TRMM_API_KEY": "<your-trmm_api_key>"
+        "TRMM_API_KEY": "<your-trmm_api_key>",
+        "TACTICAL_RMM_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -64,7 +65,8 @@ Configuration**) and add:
       "command": "tactical-rmm-mcp",
       "env": {
         "TACTICAL_RMM_BASE_URL": "<your-tactical_rmm_base_url>",
-        "TRMM_API_KEY": "<your-trmm_api_key>"
+        "TRMM_API_KEY": "<your-trmm_api_key>",
+        "TACTICAL_RMM_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -86,7 +88,8 @@ Claude Desktop:
       "command": "tactical-rmm-mcp",
       "env": {
         "TACTICAL_RMM_BASE_URL": "<your-tactical_rmm_base_url>",
-        "TRMM_API_KEY": "<your-trmm_api_key>"
+        "TRMM_API_KEY": "<your-trmm_api_key>",
+        "TACTICAL_RMM_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -104,8 +107,10 @@ All remote agents need `tactical-rmm-mcp` reachable as a public **HTTPS** endpoi
 in HTTP mode with your credentials in the environment:
 
 ```bash
-TACTICAL_RMM_BASE_URL=<value> TRMM_API_KEY=<value> tactical-rmm-mcp --transport http --addr :7777
+TACTICAL_RMM_BASE_URL=<value> TRMM_API_KEY=<value> TACTICAL_RMM_MCP_HTTP_TOKEN=<value> tactical-rmm-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <TACTICAL_RMM_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the
