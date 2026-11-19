@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "domotz-mcp",
   "display_name": "Domotz",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Every Domotz endpoint, plus a local SQLite fleet mirror that answers cross-site questions.",
   "author": {
     "name": "Servosity Inc."
@@ -17,7 +17,8 @@
       "env": {
         "DOMOTZ_API_KEY": "${user_config.domotz_api_key}",
         "DOMOTZ_BASE_URL": "${user_config.domotz_base_url}",
-        "DOMOTZ_REGION": "${user_config.domotz_region}"
+        "DOMOTZ_REGION": "${user_config.domotz_region}",
+        "DOMOTZ_MCP_HTTP_TOKEN": "${user_config.domotz_mcp_http_token}"
       }
     }
   },
@@ -40,6 +41,13 @@
       "title": "Domotz API base URL",
       "description": "Full API base URL. Leave blank: the CLI builds it from DOMOTZ_REGION. Set it only to point at a different host.",
       "required": false
+    },
+    "domotz_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

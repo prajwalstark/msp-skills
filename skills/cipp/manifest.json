@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "cipp-mcp",
   "display_name": "CIPP",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "First single-binary CLI for CIPP \u2014 offline SQLite store, fleet posture analytics, and cross-tenant fan-out no other CIPP tool has.",
   "author": {
     "name": "Servosity Inc."
@@ -17,7 +17,8 @@
       "env": {
         "CIPP_API_KEY": "${user_config.cipp_api_key}",
         "CIPP_BASE_URL": "${user_config.cipp_base_url}",
-        "CIPP_NO_CONFIG_WRITE": "${user_config.cipp_no_config_write}"
+        "CIPP_NO_CONFIG_WRITE": "${user_config.cipp_no_config_write}",
+        "CIPP_MCP_HTTP_TOKEN": "${user_config.cipp_mcp_http_token}"
       }
     }
   },
@@ -41,6 +42,13 @@
       "description": "Set to 1 to keep credentials off disk. The token cache becomes a no-op, so the connector mints a fresh token each run instead of writing one to config.toml. Leave blank for the default cached behaviour.",
       "required": false,
       "default": ""
+    },
+    "cipp_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

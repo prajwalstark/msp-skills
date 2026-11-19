@@ -41,7 +41,8 @@ Add (or merge with your existing `mcpServers` block):
         "MAXIO_BASE_URL": "",
         "MAXIO_PASSWORD": "<your-maxio_password>",
         "MAXIO_SITE": "<your-maxio_site>",
-        "MAXIO_USERNAME": "<your-maxio_username>"
+        "MAXIO_USERNAME": "<your-maxio_username>",
+        "MAXIO_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -70,7 +71,8 @@ Configuration**) and add:
         "MAXIO_BASE_URL": "",
         "MAXIO_PASSWORD": "<your-maxio_password>",
         "MAXIO_SITE": "<your-maxio_site>",
-        "MAXIO_USERNAME": "<your-maxio_username>"
+        "MAXIO_USERNAME": "<your-maxio_username>",
+        "MAXIO_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -95,7 +97,8 @@ Claude Desktop:
         "MAXIO_BASE_URL": "",
         "MAXIO_PASSWORD": "<your-maxio_password>",
         "MAXIO_SITE": "<your-maxio_site>",
-        "MAXIO_USERNAME": "<your-maxio_username>"
+        "MAXIO_USERNAME": "<your-maxio_username>",
+        "MAXIO_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -113,8 +116,10 @@ All remote agents need `maxio-mcp` reachable as a public **HTTPS** endpoint. Run
 in HTTP mode with your credentials in the environment:
 
 ```bash
-MAXIO_API_KEY=<value> MAXIO_BASE_URL=<value> MAXIO_PASSWORD=<value> MAXIO_SITE=<value> MAXIO_USERNAME=<value> maxio-mcp --transport http --addr :7777
+MAXIO_API_KEY=<value> MAXIO_BASE_URL=<value> MAXIO_PASSWORD=<value> MAXIO_SITE=<value> MAXIO_USERNAME=<value> MAXIO_MCP_HTTP_TOKEN=<value> maxio-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <MAXIO_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

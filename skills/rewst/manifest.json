@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "rewst-mcp",
   "display_name": "Rewst",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Operate and monitor Rewst RPA across every client org from the terminal or your AI agent: workflow execution health, failure triage, automation ROI, dormant-workflow cleanup, cross-org config drift, and integration-pack coverage - the multi-tenant answers the web console makes you assemble one org at a time.",
   "author": {
     "name": "Servosity Inc."
@@ -16,7 +16,8 @@
       "args": [],
       "env": {
         "REWST_BASE_URL": "${user_config.rewst_base_url}",
-        "REWST_API_TOKEN": "${user_config.rewst_api_token}"
+        "REWST_API_TOKEN": "${user_config.rewst_api_token}",
+        "REWST_MCP_HTTP_TOKEN": "${user_config.rewst_mcp_http_token}"
       }
     }
   },
@@ -34,6 +35,13 @@
       "description": "Rewst API token from an API client you create in the Rewst console (sent as a bearer token).",
       "sensitive": true,
       "required": true
+    },
+    "rewst_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

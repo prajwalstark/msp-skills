@@ -40,7 +40,8 @@ Add (or merge with your existing `mcpServers` block):
         "KNOWBE4_API_KEY": "<your-knowbe4_api_key>",
         "KNOWBE4_BASE_URL": "",
         "KNOWBE4_REGION": "<your-knowbe4_region>",
-        "KNOWBE4_USER_EVENT_API_KEY": ""
+        "KNOWBE4_USER_EVENT_API_KEY": "",
+        "KNOWBE4_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -68,7 +69,8 @@ Configuration**) and add:
         "KNOWBE4_API_KEY": "<your-knowbe4_api_key>",
         "KNOWBE4_BASE_URL": "",
         "KNOWBE4_REGION": "<your-knowbe4_region>",
-        "KNOWBE4_USER_EVENT_API_KEY": ""
+        "KNOWBE4_USER_EVENT_API_KEY": "",
+        "KNOWBE4_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -92,7 +94,8 @@ Claude Desktop:
         "KNOWBE4_API_KEY": "<your-knowbe4_api_key>",
         "KNOWBE4_BASE_URL": "",
         "KNOWBE4_REGION": "<your-knowbe4_region>",
-        "KNOWBE4_USER_EVENT_API_KEY": ""
+        "KNOWBE4_USER_EVENT_API_KEY": "",
+        "KNOWBE4_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -110,8 +113,10 @@ All remote agents need `knowbe4-mcp` reachable as a public **HTTPS** endpoint. R
 in HTTP mode with your credentials in the environment:
 
 ```bash
-KNOWBE4_API_KEY=<value> KNOWBE4_BASE_URL=<value> KNOWBE4_REGION=<value> KNOWBE4_USER_EVENT_API_KEY=<value> knowbe4-mcp --transport http --addr :7777
+KNOWBE4_API_KEY=<value> KNOWBE4_BASE_URL=<value> KNOWBE4_REGION=<value> KNOWBE4_USER_EVENT_API_KEY=<value> KNOWBE4_MCP_HTTP_TOKEN=<value> knowbe4-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <KNOWBE4_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

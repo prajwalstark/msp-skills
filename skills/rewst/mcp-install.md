@@ -38,7 +38,8 @@ Add (or merge with your existing `mcpServers` block):
       "command": "rewst-mcp",
       "env": {
         "REWST_BASE_URL": "<your-rewst_base_url>",
-        "REWST_API_TOKEN": "<your-rewst_api_token>"
+        "REWST_API_TOKEN": "<your-rewst_api_token>",
+        "REWST_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -64,7 +65,8 @@ Configuration**) and add:
       "command": "rewst-mcp",
       "env": {
         "REWST_BASE_URL": "<your-rewst_base_url>",
-        "REWST_API_TOKEN": "<your-rewst_api_token>"
+        "REWST_API_TOKEN": "<your-rewst_api_token>",
+        "REWST_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -86,7 +88,8 @@ Claude Desktop:
       "command": "rewst-mcp",
       "env": {
         "REWST_BASE_URL": "<your-rewst_base_url>",
-        "REWST_API_TOKEN": "<your-rewst_api_token>"
+        "REWST_API_TOKEN": "<your-rewst_api_token>",
+        "REWST_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -104,8 +107,10 @@ All remote agents need `rewst-mcp` reachable as a public **HTTPS** endpoint. Run
 in HTTP mode with your credentials in the environment:
 
 ```bash
-REWST_API_TOKEN=<value> REWST_BASE_URL=<value> rewst-mcp --transport http --addr :7777
+REWST_API_TOKEN=<value> REWST_BASE_URL=<value> REWST_MCP_HTTP_TOKEN=<value> rewst-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <REWST_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

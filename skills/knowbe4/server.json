@@ -3,7 +3,7 @@
   "name": "io.github.Servosity/knowbe4-mcp",
   "title": "KnowBe4 MCP",
   "description": "Every KnowBe4 KMSAT reporting feature plus a local SQLite store that answers the cross-client",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "icons": [
     {
       "src": "https://raw.githubusercontent.com/servosity/msp-skills/main/docs/assets/social/knowbe4/knowbe4-512x512.png",
@@ -21,8 +21,8 @@
   "packages": [
     {
       "registryType": "mcpb",
-      "identifier": "https://github.com/servosity/msp-skills/releases/download/knowbe4-v0.1.3/knowbe4-mcp.mcpb",
-      "version": "0.1.3",
+      "identifier": "https://github.com/servosity/msp-skills/releases/download/knowbe4-v0.1.4/knowbe4-mcp.mcpb",
+      "version": "0.1.4",
       "fileSha256": "PLACEHOLDER_SHA256_FILLED_BY_CI",
       "transport": {
         "type": "stdio"
@@ -50,6 +50,12 @@
         {
           "name": "KNOWBE4_USER_EVENT_API_KEY",
           "description": "Separate bearer key for the KnowBe4 User Events API, which has its own host and key. Needed only for the `events` commands; leave blank otherwise.",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "KNOWBE4_MCP_HTTP_TOKEN",
+          "description": "Required only when running the MCP server with --transport http. Not needed for the default local stdio transport.",
           "isRequired": false,
           "isSecret": true
         }

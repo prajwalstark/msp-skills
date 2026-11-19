@@ -44,7 +44,8 @@ Add (or merge with your existing `mcpServers` block):
         "QUICKBOOKS_ENVIRONMENT": "production",
         "QUICKBOOKS_REALM_ID": "<your-quickbooks_realm_id>",
         "QUICKBOOKS_REFRESH_TOKEN": "",
-        "QUICKBOOKS_TOKEN_URL": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer"
+        "QUICKBOOKS_TOKEN_URL": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+        "QUICKBOOKS_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -76,7 +77,8 @@ Configuration**) and add:
         "QUICKBOOKS_ENVIRONMENT": "production",
         "QUICKBOOKS_REALM_ID": "<your-quickbooks_realm_id>",
         "QUICKBOOKS_REFRESH_TOKEN": "",
-        "QUICKBOOKS_TOKEN_URL": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer"
+        "QUICKBOOKS_TOKEN_URL": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+        "QUICKBOOKS_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -104,7 +106,8 @@ Claude Desktop:
         "QUICKBOOKS_ENVIRONMENT": "production",
         "QUICKBOOKS_REALM_ID": "<your-quickbooks_realm_id>",
         "QUICKBOOKS_REFRESH_TOKEN": "",
-        "QUICKBOOKS_TOKEN_URL": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer"
+        "QUICKBOOKS_TOKEN_URL": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+        "QUICKBOOKS_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -122,8 +125,10 @@ All remote agents need `quickbooks-mcp` reachable as a public **HTTPS** endpoint
 in HTTP mode with your credentials in the environment:
 
 ```bash
-QUICKBOOKS_ACCESS_TOKEN=<value> QUICKBOOKS_BASE_URL=<value> QUICKBOOKS_CLIENT_ID=<value> QUICKBOOKS_CLIENT_SECRET=<value> QUICKBOOKS_ENVIRONMENT=<value> QUICKBOOKS_REALM_ID=<value> QUICKBOOKS_REFRESH_TOKEN=<value> QUICKBOOKS_TOKEN_URL=<value> quickbooks-mcp --transport http --addr :7777
+QUICKBOOKS_ACCESS_TOKEN=<value> QUICKBOOKS_BASE_URL=<value> QUICKBOOKS_CLIENT_ID=<value> QUICKBOOKS_CLIENT_SECRET=<value> QUICKBOOKS_ENVIRONMENT=<value> QUICKBOOKS_REALM_ID=<value> QUICKBOOKS_REFRESH_TOKEN=<value> QUICKBOOKS_TOKEN_URL=<value> QUICKBOOKS_MCP_HTTP_TOKEN=<value> quickbooks-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <QUICKBOOKS_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

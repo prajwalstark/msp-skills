@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "superops-mcp",
   "display_name": "SuperOps",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Every SuperOps PSA+RMM entity in your terminal, plus a local SQLite mirror that answers cross-entity questions the web UI can't.",
   "author": {
     "name": "Servosity Inc."
@@ -18,7 +18,8 @@
         "SUPEROPS_API_TOKEN": "${user_config.superops_api_token}",
         "SUPEROPS_BASE_URL": "${user_config.superops_base_url}",
         "SUPEROPS_REGION": "${user_config.superops_region}",
-        "SUPEROPS_SUBDOMAIN": "${user_config.superops_subdomain}"
+        "SUPEROPS_SUBDOMAIN": "${user_config.superops_subdomain}",
+        "SUPEROPS_MCP_HTTP_TOKEN": "${user_config.superops_mcp_http_token}"
       }
     }
   },
@@ -49,6 +50,13 @@
       "description": "Data-centre region your tenant lives in: us or eu. The wrong region answers with an authentication error.",
       "required": false,
       "default": "us"
+    },
+    "superops_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

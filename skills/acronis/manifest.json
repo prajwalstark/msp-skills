@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "acronis-pp-mcp",
   "display_name": "Acronis Cyber Protect Cloud",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "The first real CLI for the Acronis Cyber Protect Cloud platform \u2014 every tenant, agent, and usage metric mirrored locally, with cross-tenant rollups no single API call returns.",
   "author": {
     "name": "Servosity Inc."
@@ -19,7 +19,8 @@
         "ACRONIS_BEARER_AUTH": "${user_config.acronis_bearer_auth}",
         "ACRONIS_CLIENT_ID": "${user_config.acronis_client_id}",
         "ACRONIS_CLIENT_SECRET": "${user_config.acronis_client_secret}",
-        "ACRONIS_DATACENTER": "${user_config.acronis_datacenter}"
+        "ACRONIS_DATACENTER": "${user_config.acronis_datacenter}",
+        "ACRONIS_MCP_HTTP_TOKEN": "${user_config.acronis_mcp_http_token}"
       }
     }
   },
@@ -56,6 +57,13 @@
       "title": "Acronis Cyber Protect Cloud API base URL",
       "description": "Full API base URL. Leave blank: the CLI builds it from ACRONIS_DATACENTER. Set it only to point at a different host.",
       "required": false
+    },
+    "acronis_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

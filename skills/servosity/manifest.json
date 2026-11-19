@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "servosity-mcp",
   "display_name": "Servosity",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "description": "The first MSP-fleet CLI for backup. Every Servosity API endpoint as a typed command, plus a local mirror that lets you ask questions the dashboard can't \u2014 across your whole book of clients.",
   "author": {
     "name": "Servosity Inc."
@@ -19,7 +19,8 @@
         "SERVOSITY_MSP_BASE_URL": "${user_config.servosity_msp_base_url}",
         "SERVOSITY_MSP_RESELLER_ID": "${user_config.servosity_msp_reseller_id}",
         "SERVOSITY_MSP_TOKEN": "${user_config.servosity_msp_token}",
-        "SERVOSITY_MSP_USER_AGENT": "${user_config.servosity_msp_user_agent}"
+        "SERVOSITY_MSP_USER_AGENT": "${user_config.servosity_msp_user_agent}",
+        "SERVOSITY_MSP_MCP_HTTP_TOKEN": "${user_config.servosity_msp_mcp_http_token}"
       }
     }
   },
@@ -55,6 +56,13 @@
       "title": "User-Agent header",
       "description": "Overrides the User-Agent the CLI sends on Servosity requests. Leave blank to use the CLI's own built-in User-Agent.",
       "required": false
+    },
+    "servosity_msp_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

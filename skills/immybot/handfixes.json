@@ -794,6 +794,62 @@
      "contains": "\"properties\""
     }
    ]
+  },
+  {
+   "id": "mcp-http-bearer-auth",
+   "summary": "The MCP server's --transport http mode requires a bearer token, defaults to loopback, and refuses a non-loopback bind without TLS",
+   "why": "The press this connector was printed on emitted an UNAUTHENTICATED streamable-HTTP transport (httpSrv.Start(*addr)), and its mcp-install.md told operators to run it with --addr :7777, which binds every interface. Anyone on the same network could open an MCP session and call every tool with the operator's vendor credentials (reproduced on servosity-mcp: a non-loopback client got HTTP 200 and a session id with no credentials). Ported from hubspot-mcp (press 4.32.5, which emits this hardening): IMMYBOT_MCP_HTTP_TOKEN is required to start http mode, every request needs a matching Authorization: Bearer header (constant-time compare), the default bind is 127.0.0.1:7777, and any non-loopback --addr needs --tls-cert/--tls-key. The constant is named httpAuthEnvName, not httpTokenEnvVar, so gosec G101 does not fire and no security_suppressions.json entry is needed. A reprint from a press older than 4.32.5 regenerates main.go WITHOUT any of this while go build and go test stay green; these asserts are what notice. Retire after a reprint on press >= 4.32.5 that carries the same checks.",
+   "status": "active",
+   "asserts": [
+    {
+     "file": "cli/cmd/immybot-mcp/main.go",
+     "contains": "Handler: requireBearerAuth(token, inner),",
+     "min_count": 1,
+     "code_only": true
+    },
+    {
+     "file": "cli/cmd/immybot-mcp/main.go",
+     "contains": "httpAuthEnvName = \"IMMYBOT_MCP_HTTP_TOKEN\"",
+     "min_count": 1,
+     "code_only": true
+    },
+    {
+     "file": "cli/cmd/immybot-mcp/main.go",
+     "contains": "requireTLSForNonLoopback(*addr, loopback, *tlsCert, *tlsKey)",
+     "min_count": 1,
+     "code_only": true
+    },
+    {
+     "file": "cli/cmd/immybot-mcp/main.go",
+     "contains": "defaultHTTPAddr = \"127.0.0.1:7777\"",
+     "min_count": 1,
+     "code_only": true
+    },
+    {
+     "file": "cli/cmd/immybot-mcp/main.go",
+     "not_contains": "httpSrv.Start(*addr)"
+    },
+    {
+     "file": "cli/cmd/immybot-mcp/http_auth_test.go",
+     "contains": "func TestRequireBearerAuthRejectsMissingAndWrongTokens(",
+     "min_count": 1,
+     "code_only": true
+    }
+   ]
+  },
+  {
+   "id": "mcp-http-read-header-timeout",
+   "summary": "The MCP server's --transport http listener sets ReadHeaderTimeout so one client cannot hold it open by dribbling request headers",
+   "why": "Added with mcp-http-bearer-auth: the http.Server literal that replaced httpSrv.Start sets ReadHeaderTimeout: 10 * time.Second, matching hubspot/huntress. Without it one client can hold the listener open indefinitely by sending request headers one byte at a time (Slowloris, gosec G112). code_only because the explanatory comment above the field names G112; the assert must be satisfied by the field itself.",
+   "status": "active",
+   "asserts": [
+    {
+     "file": "cli/cmd/immybot-mcp/main.go",
+     "contains": "ReadHeaderTimeout: 10 * time.Second,",
+     "min_count": 1,
+     "code_only": true
+    }
+   ]
   }
  ]
 }

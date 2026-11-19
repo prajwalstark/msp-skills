@@ -43,7 +43,8 @@ Add (or merge with your existing `mcpServers` block):
         "SHERWEB_OAUTH_SCOPE": "<your-sherweb_oauth_scope>",
         "SHERWEB_SUBSCRIPTION_KEY": "<your-sherweb_subscription_key>",
         "SHERWEB_TOKEN_URL": "https://api.sherweb.com/auth/oidc/connect/token",
-        "SHERWEB_NO_CONFIG_WRITE": ""
+        "SHERWEB_NO_CONFIG_WRITE": "",
+        "SHERWEB_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -74,7 +75,8 @@ Configuration**) and add:
         "SHERWEB_OAUTH_SCOPE": "<your-sherweb_oauth_scope>",
         "SHERWEB_SUBSCRIPTION_KEY": "<your-sherweb_subscription_key>",
         "SHERWEB_TOKEN_URL": "https://api.sherweb.com/auth/oidc/connect/token",
-        "SHERWEB_NO_CONFIG_WRITE": ""
+        "SHERWEB_NO_CONFIG_WRITE": "",
+        "SHERWEB_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -101,7 +103,8 @@ Claude Desktop:
         "SHERWEB_OAUTH_SCOPE": "<your-sherweb_oauth_scope>",
         "SHERWEB_SUBSCRIPTION_KEY": "<your-sherweb_subscription_key>",
         "SHERWEB_TOKEN_URL": "https://api.sherweb.com/auth/oidc/connect/token",
-        "SHERWEB_NO_CONFIG_WRITE": ""
+        "SHERWEB_NO_CONFIG_WRITE": "",
+        "SHERWEB_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -119,8 +122,10 @@ All remote agents need `sherweb-mcp` reachable as a public **HTTPS** endpoint. R
 in HTTP mode with your credentials in the environment:
 
 ```bash
-SHERWEB_BASE_URL=<value> SHERWEB_CLIENT_ID=<value> SHERWEB_CLIENT_SECRET=<value> SHERWEB_OAUTH_SCOPE=<value> SHERWEB_SUBSCRIPTION_KEY=<value> SHERWEB_TOKEN_URL=<value> sherweb-mcp --transport http --addr :7777
+SHERWEB_BASE_URL=<value> SHERWEB_CLIENT_ID=<value> SHERWEB_CLIENT_SECRET=<value> SHERWEB_OAUTH_SCOPE=<value> SHERWEB_SUBSCRIPTION_KEY=<value> SHERWEB_TOKEN_URL=<value> SHERWEB_MCP_HTTP_TOKEN=<value> sherweb-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <SHERWEB_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

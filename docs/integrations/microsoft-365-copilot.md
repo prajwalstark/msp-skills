@@ -53,8 +53,11 @@ The MSP Skills binaries serve the Streamable-HTTP transport Copilot expects. Run
 HALOPSA_TENANT=<tenant> \
 HALOPSA_CLIENT_ID=<id> \
 HALOPSA_CLIENT_SECRET=<secret> \
-halopsa-mcp --transport http --addr :7777
+HALOPSA_MCP_HTTP_TOKEN=<random-secret> \
+halopsa-mcp --transport http
 ```
+
+Every request must carry `Authorization: Bearer <HALOPSA_MCP_HTTP_TOKEN>` (the server answers 401 otherwise, and refuses to start if the variable is unset). If your client cannot send that header, have your reverse proxy add it after the proxy has authenticated the caller, for example behind Cloudflare Access. Leave `--addr` at its loopback default: a non-loopback bind is refused without `--tls-cert`/`--tls-key`.
 
 Then expose `http://localhost:7777/mcp` as a public **HTTPS** URL via Cloudflare Tunnel, ngrok (HTTPS), or your own reverse proxy. The path matters: the server answers Streamable HTTP at `/mcp` and returns 404 at the bare root. (Repeat for `servosity-mcp` on another port.) **Treat the URL as a credential** - gate it behind SSO / Cloudflare Access; never expose it bare on the internet.
 

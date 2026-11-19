@@ -40,7 +40,8 @@ Add (or merge with your existing `mcpServers` block):
         "COVE_BASE_URL": "https://api.backup.management",
         "COVE_PARTNER": "<full customer string from Cove console dropdown, e.g. Acme Corp (admin@acme.com)>",
         "COVE_PASSWORD": "<api-token>",
-        "COVE_USERNAME": "<api-user-login-name>"
+        "COVE_USERNAME": "<api-user-login-name>",
+        "COVE_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -68,7 +69,8 @@ Configuration**) and add:
         "COVE_BASE_URL": "https://api.backup.management",
         "COVE_PARTNER": "<full customer string from Cove console dropdown, e.g. Acme Corp (admin@acme.com)>",
         "COVE_PASSWORD": "<api-token>",
-        "COVE_USERNAME": "<api-user-login-name>"
+        "COVE_USERNAME": "<api-user-login-name>",
+        "COVE_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -92,7 +94,8 @@ Claude Desktop:
         "COVE_BASE_URL": "https://api.backup.management",
         "COVE_PARTNER": "<full customer string from Cove console dropdown, e.g. Acme Corp (admin@acme.com)>",
         "COVE_PASSWORD": "<api-token>",
-        "COVE_USERNAME": "<api-user-login-name>"
+        "COVE_USERNAME": "<api-user-login-name>",
+        "COVE_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -110,8 +113,10 @@ All remote agents need `cove-mcp` reachable as a public **HTTPS** endpoint. Run 
 in HTTP mode with your credentials in the environment:
 
 ```bash
-COVE_PARTNER="<full customer string from Cove console dropdown, e.g. Acme Corp (admin@acme.com)>" COVE_PASSWORD=<api-token> COVE_USERNAME=<api-user-login-name> cove-mcp --transport http --addr :7777
+COVE_PARTNER="<full customer string from Cove console dropdown, e.g. Acme Corp (admin@acme.com)>" COVE_PASSWORD=<api-token> COVE_USERNAME=<api-user-login-name> COVE_MCP_HTTP_TOKEN=<value> cove-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <COVE_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

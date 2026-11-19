@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "kaseya-bms-mcp",
   "display_name": "Kaseya BMS",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "The first dedicated CLI and MCP server for Kaseya BMS - the full PSA surface plus offline sync, full-text search, and the queue, contract-burn, and unbilled-revenue analytics the web grid can't compute.",
   "author": {
     "name": "Servosity Inc."
@@ -20,7 +20,8 @@
         "KASEYA_BMS_PASSWORD": "${user_config.kaseya_bms_password}",
         "KASEYA_BMS_TENANT": "${user_config.kaseya_bms_tenant}",
         "KASEYA_BMS_TOKEN": "${user_config.kaseya_bms_token}",
-        "KASEYA_BMS_USERNAME": "${user_config.kaseya_bms_username}"
+        "KASEYA_BMS_USERNAME": "${user_config.kaseya_bms_username}",
+        "KASEYA_BMS_MCP_HTTP_TOKEN": "${user_config.kaseya_bms_mcp_http_token}"
       }
     }
   },
@@ -62,6 +63,13 @@
       "description": "Base URL for the Kaseya BMS API. Leave the prefilled default unless your account uses a different regional or self-hosted host.",
       "required": false,
       "default": "https://api.bms.kaseya.com"
+    },
+    "kaseya_bms_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

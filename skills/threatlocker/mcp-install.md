@@ -41,7 +41,8 @@ Add (or merge with your existing `mcpServers` block):
         "THREATLOCKER_API_KEY": "<your-threatlocker_api_key>",
         "THREATLOCKER_BASE_URL": "https://portalapi.g.threatlocker.com/portalapi",
         "THREATLOCKER_ORG_ID": "",
-        "THREATLOCKER_USER_AGENT": ""
+        "THREATLOCKER_USER_AGENT": "",
+        "THREATLOCKER_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -70,7 +71,8 @@ Configuration**) and add:
         "THREATLOCKER_API_KEY": "<your-threatlocker_api_key>",
         "THREATLOCKER_BASE_URL": "https://portalapi.g.threatlocker.com/portalapi",
         "THREATLOCKER_ORG_ID": "",
-        "THREATLOCKER_USER_AGENT": ""
+        "THREATLOCKER_USER_AGENT": "",
+        "THREATLOCKER_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -95,7 +97,8 @@ Claude Desktop:
         "THREATLOCKER_API_KEY": "<your-threatlocker_api_key>",
         "THREATLOCKER_BASE_URL": "https://portalapi.g.threatlocker.com/portalapi",
         "THREATLOCKER_ORG_ID": "",
-        "THREATLOCKER_USER_AGENT": ""
+        "THREATLOCKER_USER_AGENT": "",
+        "THREATLOCKER_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -113,8 +116,10 @@ All remote agents need `threatlocker-mcp` reachable as a public **HTTPS** endpoi
 in HTTP mode with your credentials in the environment:
 
 ```bash
-PRINTING_PRESS_CLIENT_PROFILE=<value> THREATLOCKER_API_KEY=<value> THREATLOCKER_BASE_URL=<value> THREATLOCKER_ORG_ID=<value> THREATLOCKER_USER_AGENT=<value> threatlocker-mcp --transport http --addr :7777
+PRINTING_PRESS_CLIENT_PROFILE=<value> THREATLOCKER_API_KEY=<value> THREATLOCKER_BASE_URL=<value> THREATLOCKER_ORG_ID=<value> THREATLOCKER_USER_AGENT=<value> THREATLOCKER_MCP_HTTP_TOKEN=<value> threatlocker-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <THREATLOCKER_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

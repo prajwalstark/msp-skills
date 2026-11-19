@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "pax8-mcp",
   "display_name": "Pax8",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Every Pax8 Partner API endpoint, plus an offline store that reconciles billing, tracks MRR, and catches usage overages no Pax8 tool surfaces.",
   "author": {
     "name": "Servosity Inc."
@@ -21,7 +21,8 @@
         "PAX8_CLIENT_SECRET": "${user_config.pax8_client_secret}",
         "PAX8_OAUTH_SCOPE": "${user_config.pax8_oauth_scope}",
         "PAX8_TOKEN_URL": "${user_config.pax8_token_url}",
-        "PAX8_NO_CONFIG_WRITE": "${user_config.pax8_no_config_write}"
+        "PAX8_NO_CONFIG_WRITE": "${user_config.pax8_no_config_write}",
+        "PAX8_MCP_HTTP_TOKEN": "${user_config.pax8_mcp_http_token}"
       }
     }
   },
@@ -74,6 +75,13 @@
       "description": "Set to 1 to keep credentials off disk. The token cache becomes a no-op, so the connector mints a fresh token each run instead of writing one to config.toml. Leave blank for the default cached behaviour.",
       "required": false,
       "default": ""
+    },
+    "pax8_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

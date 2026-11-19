@@ -42,7 +42,8 @@ Add (or merge with your existing `mcpServers` block):
         "APPDIRECT_CLIENT_SECRET": "<your-appdirect_client_secret>",
         "APPDIRECT_OAUTH_SCOPE": "<your-appdirect_oauth_scope>",
         "APPDIRECT_TOKEN_URL": "https://marketplace.appdirect.com/oauth2/token",
-        "APPDIRECT_NO_CONFIG_WRITE": ""
+        "APPDIRECT_NO_CONFIG_WRITE": "",
+        "APPDIRECT_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -72,7 +73,8 @@ Configuration**) and add:
         "APPDIRECT_CLIENT_SECRET": "<your-appdirect_client_secret>",
         "APPDIRECT_OAUTH_SCOPE": "<your-appdirect_oauth_scope>",
         "APPDIRECT_TOKEN_URL": "https://marketplace.appdirect.com/oauth2/token",
-        "APPDIRECT_NO_CONFIG_WRITE": ""
+        "APPDIRECT_NO_CONFIG_WRITE": "",
+        "APPDIRECT_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -98,7 +100,8 @@ Claude Desktop:
         "APPDIRECT_CLIENT_SECRET": "<your-appdirect_client_secret>",
         "APPDIRECT_OAUTH_SCOPE": "<your-appdirect_oauth_scope>",
         "APPDIRECT_TOKEN_URL": "https://marketplace.appdirect.com/oauth2/token",
-        "APPDIRECT_NO_CONFIG_WRITE": ""
+        "APPDIRECT_NO_CONFIG_WRITE": "",
+        "APPDIRECT_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -116,8 +119,10 @@ All remote agents need `appdirect-mcp` reachable as a public **HTTPS** endpoint.
 in HTTP mode with your credentials in the environment:
 
 ```bash
-APPDIRECT_BASE_URL=<value> APPDIRECT_CLIENT_ID=<value> APPDIRECT_CLIENT_SECRET=<value> APPDIRECT_OAUTH_SCOPE=<value> APPDIRECT_TOKEN_URL=<value> appdirect-mcp --transport http --addr :7777
+APPDIRECT_BASE_URL=<value> APPDIRECT_CLIENT_ID=<value> APPDIRECT_CLIENT_SECRET=<value> APPDIRECT_OAUTH_SCOPE=<value> APPDIRECT_TOKEN_URL=<value> APPDIRECT_MCP_HTTP_TOKEN=<value> appdirect-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <APPDIRECT_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

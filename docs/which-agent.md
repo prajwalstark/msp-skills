@@ -165,7 +165,7 @@ Codex supports stdio + Streamable HTTP, and runs concurrent read-only tools when
 **Option 1 - run `halopsa-mcp` / `servosity-mcp` in HTTP mode (no bridge package):**
 
 ```bash
-HALOPSA_TENANT=... halopsa-mcp --transport http --addr :7777
+HALOPSA_TENANT=... HALOPSA_MCP_HTTP_TOKEN=... halopsa-mcp --transport http
 ```
 
 The server answers at `http://localhost:7777/mcp`; the bare root returns 404, so the path is part of the endpoint. Then in ChatGPT: Settings → Advanced → **enable Developer Mode** → Connectors tab → Add MCP server → URL = `https://<your-tunnel>/mcp`. If your tunnel is local-only (e.g. ngrok), Developer Mode will refuse without HTTPS. Use a TLS tunnel (Cloudflare Tunnel, ngrok with HTTPS, your own reverse proxy).
@@ -332,7 +332,7 @@ This is the Copilot most MSPs and their clients actually have - bundled into the
 
 ```bash
 HALOPSA_TENANT=<tenant> HALOPSA_CLIENT_ID=<id> HALOPSA_CLIENT_SECRET=<secret> \
-  halopsa-mcp --transport http --addr :7777
+  HALOPSA_MCP_HTTP_TOKEN=<random-secret> halopsa-mcp --transport http
 ```
 
 Treat the resulting HTTPS URL as a credential; gate it behind SSO / Cloudflare Access for team use.

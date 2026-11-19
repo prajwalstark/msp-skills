@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "crowdstrike-mcp",
   "display_name": "CrowdStrike Falcon",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Every CrowdStrike Falcon MSP operation, plus a Flight-Control-aware local store that answers fleet-wide questions across all your tenants at once \u2014 something no other Falcon tool (including the official MCP server) does.",
   "author": {
     "name": "Servosity Inc."
@@ -20,7 +20,8 @@
         "CROWDSTRIKE_TOKEN_URL": "${user_config.crowdstrike_token_url}",
         "FALCON_CLIENT_ID": "${user_config.falcon_client_id}",
         "FALCON_CLIENT_SECRET": "${user_config.falcon_client_secret}",
-        "CROWDSTRIKE_NO_CONFIG_WRITE": "${user_config.crowdstrike_no_config_write}"
+        "CROWDSTRIKE_NO_CONFIG_WRITE": "${user_config.crowdstrike_no_config_write}",
+        "CROWDSTRIKE_MCP_HTTP_TOKEN": "${user_config.crowdstrike_mcp_http_token}"
       }
     }
   },
@@ -66,6 +67,13 @@
       "description": "Set to 1 to keep credentials off disk. The token cache becomes a no-op, so the connector mints a fresh token each run instead of writing one to config.toml. Leave blank for the default cached behaviour.",
       "required": false,
       "default": ""
+    },
+    "crowdstrike_mcp_http_token": {
+      "type": "string",
+      "title": "MCP HTTP transport bearer token",
+      "description": "Required only when running the MCP server with --transport http (a remote/hosted deployment). Callers must send a matching Authorization: Bearer header. Not needed for the default local stdio transport that Claude Desktop uses.",
+      "required": false,
+      "sensitive": true
     }
   },
   "compatibility": {

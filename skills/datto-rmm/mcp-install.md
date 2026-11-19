@@ -42,7 +42,8 @@ Add (or merge with your existing `mcpServers` block):
         "DATTO_RMM_BASE_URL": "",
         "DATTO_RMM_PLATFORM": "",
         "DATTO_RMM_TOKEN": "<your-datto_rmm_token>",
-        "DATTO_RMM_NO_CONFIG_WRITE": ""
+        "DATTO_RMM_NO_CONFIG_WRITE": "",
+        "DATTO_RMM_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -72,7 +73,8 @@ Configuration**) and add:
         "DATTO_RMM_BASE_URL": "",
         "DATTO_RMM_PLATFORM": "",
         "DATTO_RMM_TOKEN": "<your-datto_rmm_token>",
-        "DATTO_RMM_NO_CONFIG_WRITE": ""
+        "DATTO_RMM_NO_CONFIG_WRITE": "",
+        "DATTO_RMM_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -98,7 +100,8 @@ Claude Desktop:
         "DATTO_RMM_BASE_URL": "",
         "DATTO_RMM_PLATFORM": "",
         "DATTO_RMM_TOKEN": "<your-datto_rmm_token>",
-        "DATTO_RMM_NO_CONFIG_WRITE": ""
+        "DATTO_RMM_NO_CONFIG_WRITE": "",
+        "DATTO_RMM_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -116,8 +119,10 @@ All remote agents need `datto-rmm-mcp` reachable as a public **HTTPS** endpoint.
 in HTTP mode with your credentials in the environment:
 
 ```bash
-DATTO_RMM_API_KEY=<value> DATTO_RMM_API_SECRET_KEY=<value> DATTO_RMM_BASE_URL=<value> DATTO_RMM_PLATFORM=<value> DATTO_RMM_TOKEN=<value> datto-rmm-mcp --transport http --addr :7777
+DATTO_RMM_API_KEY=<value> DATTO_RMM_API_SECRET_KEY=<value> DATTO_RMM_BASE_URL=<value> DATTO_RMM_PLATFORM=<value> DATTO_RMM_TOKEN=<value> DATTO_RMM_MCP_HTTP_TOKEN=<value> datto-rmm-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <DATTO_RMM_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

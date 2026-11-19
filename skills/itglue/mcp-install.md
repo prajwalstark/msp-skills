@@ -38,7 +38,8 @@ Add (or merge with your existing `mcpServers` block):
       "command": "itglue-mcp",
       "env": {
         "ITGLUE_API_KEY": "<your-itglue_api_key>",
-        "ITGLUE_BASE_URL": "https://api.itglue.com"
+        "ITGLUE_BASE_URL": "https://api.itglue.com",
+        "ITGLUE_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -64,7 +65,8 @@ Configuration**) and add:
       "command": "itglue-mcp",
       "env": {
         "ITGLUE_API_KEY": "<your-itglue_api_key>",
-        "ITGLUE_BASE_URL": "https://api.itglue.com"
+        "ITGLUE_BASE_URL": "https://api.itglue.com",
+        "ITGLUE_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -86,7 +88,8 @@ Claude Desktop:
       "command": "itglue-mcp",
       "env": {
         "ITGLUE_API_KEY": "<your-itglue_api_key>",
-        "ITGLUE_BASE_URL": "https://api.itglue.com"
+        "ITGLUE_BASE_URL": "https://api.itglue.com",
+        "ITGLUE_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -104,8 +107,10 @@ All remote agents need `itglue-mcp` reachable as a public **HTTPS** endpoint. Ru
 in HTTP mode with your credentials in the environment:
 
 ```bash
-ITGLUE_API_KEY=<value> ITGLUE_BASE_URL=<value> itglue-mcp --transport http --addr :7777
+ITGLUE_API_KEY=<value> ITGLUE_BASE_URL=<value> ITGLUE_MCP_HTTP_TOKEN=<value> itglue-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <ITGLUE_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

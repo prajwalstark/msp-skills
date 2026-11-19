@@ -40,7 +40,8 @@ Add (or merge with your existing `mcpServers` block):
         "GRADIENT_BASE_URL": "https://app.usegradient.com/api",
         "GRADIENT_PARTNER_API_KEY": "<your-gradient_partner_api_key>",
         "GRADIENT_TOKEN": "<your-gradient_token>",
-        "GRADIENT_VENDOR_API_KEY": "<your-gradient_vendor_api_key>"
+        "GRADIENT_VENDOR_API_KEY": "<your-gradient_vendor_api_key>",
+        "GRADIENT_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -68,7 +69,8 @@ Configuration**) and add:
         "GRADIENT_BASE_URL": "https://app.usegradient.com/api",
         "GRADIENT_PARTNER_API_KEY": "<your-gradient_partner_api_key>",
         "GRADIENT_TOKEN": "<your-gradient_token>",
-        "GRADIENT_VENDOR_API_KEY": "<your-gradient_vendor_api_key>"
+        "GRADIENT_VENDOR_API_KEY": "<your-gradient_vendor_api_key>",
+        "GRADIENT_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -92,7 +94,8 @@ Claude Desktop:
         "GRADIENT_BASE_URL": "https://app.usegradient.com/api",
         "GRADIENT_PARTNER_API_KEY": "<your-gradient_partner_api_key>",
         "GRADIENT_TOKEN": "<your-gradient_token>",
-        "GRADIENT_VENDOR_API_KEY": "<your-gradient_vendor_api_key>"
+        "GRADIENT_VENDOR_API_KEY": "<your-gradient_vendor_api_key>",
+        "GRADIENT_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -110,8 +113,10 @@ All remote agents need `gradient-mcp` reachable as a public **HTTPS** endpoint. 
 in HTTP mode with your credentials in the environment:
 
 ```bash
-GRADIENT_BASE_URL=<value> GRADIENT_PARTNER_API_KEY=<value> GRADIENT_TOKEN=<value> GRADIENT_VENDOR_API_KEY=<value> gradient-mcp --transport http --addr :7777
+GRADIENT_BASE_URL=<value> GRADIENT_PARTNER_API_KEY=<value> GRADIENT_TOKEN=<value> GRADIENT_VENDOR_API_KEY=<value> GRADIENT_MCP_HTTP_TOKEN=<value> gradient-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <GRADIENT_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

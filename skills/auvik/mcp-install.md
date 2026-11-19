@@ -42,7 +42,8 @@ Add (or merge with your existing `mcpServers` block):
         "AUVIK_TENANT": "",
         "AUVIK_USERNAME": "<your-auvik-user-email>",
         "AUVIK_USER_AGENT": "",
-        "PRINTING_PRESS_CLIENT_PROFILE": ""
+        "PRINTING_PRESS_CLIENT_PROFILE": "",
+        "AUVIK_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -72,7 +73,8 @@ Configuration**) and add:
         "AUVIK_TENANT": "",
         "AUVIK_USERNAME": "<your-auvik-user-email>",
         "AUVIK_USER_AGENT": "",
-        "PRINTING_PRESS_CLIENT_PROFILE": ""
+        "PRINTING_PRESS_CLIENT_PROFILE": "",
+        "AUVIK_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -98,7 +100,8 @@ Claude Desktop:
         "AUVIK_TENANT": "",
         "AUVIK_USERNAME": "<your-auvik-user-email>",
         "AUVIK_USER_AGENT": "",
-        "PRINTING_PRESS_CLIENT_PROFILE": ""
+        "PRINTING_PRESS_CLIENT_PROFILE": "",
+        "AUVIK_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -116,8 +119,10 @@ All remote agents need `auvik-mcp` reachable as a public **HTTPS** endpoint. Run
 in HTTP mode with your credentials in the environment:
 
 ```bash
-AUVIK_API_KEY=<your-auvik-api-key> AUVIK_BASE_URL=https://auvikapi.us1.my.auvik.com AUVIK_USERNAME=<your-auvik-user-email> auvik-mcp --transport http --addr :7777
+AUVIK_API_KEY=<your-auvik-api-key> AUVIK_BASE_URL=https://auvikapi.us1.my.auvik.com AUVIK_USERNAME=<your-auvik-user-email> AUVIK_MCP_HTTP_TOKEN=<value> auvik-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <AUVIK_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

@@ -38,7 +38,8 @@ Add (or merge with your existing `mcpServers` block):
       "command": "pandadoc-mcp",
       "env": {
         "PANDADOC_API_KEY": "<your-pandadoc_api_key>",
-        "PANDADOC_BASE_URL": "https://api.pandadoc.com/public/v1"
+        "PANDADOC_BASE_URL": "https://api.pandadoc.com/public/v1",
+        "PANDADOC_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -64,7 +65,8 @@ Configuration**) and add:
       "command": "pandadoc-mcp",
       "env": {
         "PANDADOC_API_KEY": "<your-pandadoc_api_key>",
-        "PANDADOC_BASE_URL": "https://api.pandadoc.com/public/v1"
+        "PANDADOC_BASE_URL": "https://api.pandadoc.com/public/v1",
+        "PANDADOC_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -86,7 +88,8 @@ Claude Desktop:
       "command": "pandadoc-mcp",
       "env": {
         "PANDADOC_API_KEY": "<your-pandadoc_api_key>",
-        "PANDADOC_BASE_URL": "https://api.pandadoc.com/public/v1"
+        "PANDADOC_BASE_URL": "https://api.pandadoc.com/public/v1",
+        "PANDADOC_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -104,8 +107,10 @@ All remote agents need `pandadoc-mcp` reachable as a public **HTTPS** endpoint. 
 in HTTP mode with your credentials in the environment:
 
 ```bash
-PANDADOC_API_KEY=<value> PANDADOC_BASE_URL=<value> pandadoc-mcp --transport http --addr :7777
+PANDADOC_API_KEY=<value> PANDADOC_BASE_URL=<value> PANDADOC_MCP_HTTP_TOKEN=<value> pandadoc-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <PANDADOC_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

@@ -38,7 +38,8 @@ Add (or merge with your existing `mcpServers` block):
       "command": "runzero-mcp",
       "env": {
         "RUNZERO_API_KEY": "<your-runzero_api_key>",
-        "RUNZERO_BASE_URL": "https://console.runzero.com/api/v1.0"
+        "RUNZERO_BASE_URL": "https://console.runzero.com/api/v1.0",
+        "RUNZERO_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -64,7 +65,8 @@ Configuration**) and add:
       "command": "runzero-mcp",
       "env": {
         "RUNZERO_API_KEY": "<your-runzero_api_key>",
-        "RUNZERO_BASE_URL": "https://console.runzero.com/api/v1.0"
+        "RUNZERO_BASE_URL": "https://console.runzero.com/api/v1.0",
+        "RUNZERO_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -86,7 +88,8 @@ Claude Desktop:
       "command": "runzero-mcp",
       "env": {
         "RUNZERO_API_KEY": "<your-runzero_api_key>",
-        "RUNZERO_BASE_URL": "https://console.runzero.com/api/v1.0"
+        "RUNZERO_BASE_URL": "https://console.runzero.com/api/v1.0",
+        "RUNZERO_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -104,8 +107,10 @@ All remote agents need `runzero-mcp` reachable as a public **HTTPS** endpoint. R
 in HTTP mode with your credentials in the environment:
 
 ```bash
-RUNZERO_API_KEY=<value> RUNZERO_BASE_URL=<value> runzero-mcp --transport http --addr :7777
+RUNZERO_API_KEY=<value> RUNZERO_BASE_URL=<value> RUNZERO_MCP_HTTP_TOKEN=<value> runzero-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <RUNZERO_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

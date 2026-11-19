@@ -77,8 +77,10 @@ The Gemini app doesn't launch a local binary. Host the MCP server over HTTPS fir
 
 ```bash
 HALOPSA_TENANT=<tenant> HALOPSA_CLIENT_ID=<id> HALOPSA_CLIENT_SECRET=<secret> \
-  halopsa-mcp --transport http --addr :7777
+  HALOPSA_MCP_HTTP_TOKEN=<random-secret> halopsa-mcp --transport http
 ```
+
+Every request must carry `Authorization: Bearer <HALOPSA_MCP_HTTP_TOKEN>` (the server answers 401 otherwise, and refuses to start if the variable is unset). If your client cannot send that header, have your reverse proxy add it after the proxy has authenticated the caller, for example behind Cloudflare Access. Leave `--addr` at its loopback default: a non-loopback bind is refused without `--tls-cert`/`--tls-key`.
 
 Expose `http://localhost:7777/mcp` as a public **HTTPS** URL via a secure tunnel (Cloudflare Tunnel, ngrok), then connect that endpoint in the Gemini app. The path is part of the endpoint: the server answers Streamable HTTP at `/mcp` and returns 404 at the bare root. Treat the URL as a credential. This is the same pattern as the [ChatGPT integration](/integrations/chatgpt/) - if you want a no-hosting path on Google, use Gemini CLI above instead.
 

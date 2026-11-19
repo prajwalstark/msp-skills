@@ -42,7 +42,8 @@ Add (or merge with your existing `mcpServers` block):
         "SKYKICK_CLIENT_SECRET": "<your-skykick_client_secret>",
         "SKYKICK_OAUTH_SCOPE": "<your-skykick_oauth_scope>",
         "SKYKICK_TOKEN_URL": "https://apis.cloudservices.connectwise.com/auth/token",
-        "SKYKICK_NO_CONFIG_WRITE": ""
+        "SKYKICK_NO_CONFIG_WRITE": "",
+        "SKYKICK_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -72,7 +73,8 @@ Configuration**) and add:
         "SKYKICK_CLIENT_SECRET": "<your-skykick_client_secret>",
         "SKYKICK_OAUTH_SCOPE": "<your-skykick_oauth_scope>",
         "SKYKICK_TOKEN_URL": "https://apis.cloudservices.connectwise.com/auth/token",
-        "SKYKICK_NO_CONFIG_WRITE": ""
+        "SKYKICK_NO_CONFIG_WRITE": "",
+        "SKYKICK_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -98,7 +100,8 @@ Claude Desktop:
         "SKYKICK_CLIENT_SECRET": "<your-skykick_client_secret>",
         "SKYKICK_OAUTH_SCOPE": "<your-skykick_oauth_scope>",
         "SKYKICK_TOKEN_URL": "https://apis.cloudservices.connectwise.com/auth/token",
-        "SKYKICK_NO_CONFIG_WRITE": ""
+        "SKYKICK_NO_CONFIG_WRITE": "",
+        "SKYKICK_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -116,8 +119,10 @@ All remote agents need `skykick-mcp` reachable as a public **HTTPS** endpoint. R
 in HTTP mode with your credentials in the environment:
 
 ```bash
-SKYKICK_BASE_URL=<value> SKYKICK_CLIENT_ID=<value> SKYKICK_CLIENT_SECRET=<value> SKYKICK_OAUTH_SCOPE=<value> SKYKICK_TOKEN_URL=<value> skykick-mcp --transport http --addr :7777
+SKYKICK_BASE_URL=<value> SKYKICK_CLIENT_ID=<value> SKYKICK_CLIENT_SECRET=<value> SKYKICK_OAUTH_SCOPE=<value> SKYKICK_TOKEN_URL=<value> SKYKICK_MCP_HTTP_TOKEN=<value> skykick-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <SKYKICK_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the

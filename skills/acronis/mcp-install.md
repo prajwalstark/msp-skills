@@ -41,7 +41,8 @@ Add (or merge with your existing `mcpServers` block):
         "ACRONIS_BEARER_AUTH": "<your-acronis_bearer_auth>",
         "ACRONIS_CLIENT_ID": "<your-acronis_client_id>",
         "ACRONIS_CLIENT_SECRET": "<your-acronis_client_secret>",
-        "ACRONIS_DATACENTER": "<your-acronis_datacenter>"
+        "ACRONIS_DATACENTER": "<your-acronis_datacenter>",
+        "ACRONIS_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -70,7 +71,8 @@ Configuration**) and add:
         "ACRONIS_BEARER_AUTH": "<your-acronis_bearer_auth>",
         "ACRONIS_CLIENT_ID": "<your-acronis_client_id>",
         "ACRONIS_CLIENT_SECRET": "<your-acronis_client_secret>",
-        "ACRONIS_DATACENTER": "<your-acronis_datacenter>"
+        "ACRONIS_DATACENTER": "<your-acronis_datacenter>",
+        "ACRONIS_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -95,7 +97,8 @@ Claude Desktop:
         "ACRONIS_BEARER_AUTH": "<your-acronis_bearer_auth>",
         "ACRONIS_CLIENT_ID": "<your-acronis_client_id>",
         "ACRONIS_CLIENT_SECRET": "<your-acronis_client_secret>",
-        "ACRONIS_DATACENTER": "<your-acronis_datacenter>"
+        "ACRONIS_DATACENTER": "<your-acronis_datacenter>",
+        "ACRONIS_MCP_HTTP_TOKEN": ""
       }
     }
   }
@@ -113,8 +116,10 @@ All remote agents need `acronis-mcp` reachable as a public **HTTPS** endpoint. R
 in HTTP mode with your credentials in the environment:
 
 ```bash
-ACRONIS_BASE_URL=<value> ACRONIS_BEARER_AUTH=<value> ACRONIS_CLIENT_ID=<value> ACRONIS_CLIENT_SECRET=<value> ACRONIS_DATACENTER=<value> acronis-mcp --transport http --addr :7777
+ACRONIS_BASE_URL=<value> ACRONIS_BEARER_AUTH=<value> ACRONIS_CLIENT_ID=<value> ACRONIS_CLIENT_SECRET=<value> ACRONIS_DATACENTER=<value> ACRONIS_MCP_HTTP_TOKEN=<value> acronis-mcp --transport http
 ```
+
+Leave `--addr` at its default, which binds loopback only on port 7777, and let the tunnel terminate TLS: the server refuses a plaintext bind on any non-loopback address (including `--addr :7777`, which binds every interface) unless you pass `--tls-cert` and `--tls-key`. Every caller must send `Authorization: Bearer <ACRONIS_MCP_HTTP_TOKEN>`; the server exits at start-up if that variable is unset.
 
 Then expose `http://localhost:7777/mcp` as a public HTTPS URL via a secure tunnel
 (Cloudflare Tunnel, ngrok) or your own reverse proxy. The path is part of the
